@@ -11,8 +11,12 @@ class Planet extends Model
 
     protected $fillable = [
         'id',
+        'name',
+        'model',
+        'lenght',
         'film',
         'people',
+
 
     ];
     public function peoples()

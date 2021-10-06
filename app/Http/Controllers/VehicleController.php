@@ -21,6 +21,8 @@ class VehicleController extends Controller
     {
               $exemple = Vehicle::find($id);
               return response()->json($exemple,200);
+              $ex = Vehicle::find($name);
+              return response()->json($name,200);
     }
     public function edit($id)
     {
