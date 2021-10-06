@@ -8,12 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Specie extends Model
 {
     use HasFactory;
-    use HasFactory;
-
+    
+    protected $table='species';
     protected $fillable = [
         'id',
         'film',
         'people',
-
     ];
 }
