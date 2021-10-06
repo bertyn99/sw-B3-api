@@ -16,11 +16,11 @@ class Starship_film extends Model
 
     public function starships()
     {
-        return $this->belongsTo(Starship::class, 'starships');
+        return $this->belongsTo(Starship::class, 'starships', 'id', 'starship');
     }
     
     public function films()
     {
-        return $this->belongsTo(Film::class, 'films');
+        return $this->belongsTo(Film::class, 'films', 'id', 'film');
     }
 }

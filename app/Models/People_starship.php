@@ -15,11 +15,11 @@ class People_starship extends Model
 
     public function starships()
     {
-        return $this->belongsTo(Starship::class, 'starships');
+        return $this->belongsTo(Starship::class, 'starships', 'id', 'starship');
     }
     
     public function people()
     {
-        return $this->belongsTo(People::class, 'peoples');
+        return $this->belongsTo(People::class, 'peoples', 'id', 'people');
     }
 }
