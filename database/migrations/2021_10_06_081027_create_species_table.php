@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePeoplesTable extends Migration
+class CreateSpeciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,21 @@ class CreatePeoplesTable extends Migration
      */
     public function up()
     {
-        Schema::create('peoples', function (Blueprint $table) {
+        Schema::create('species', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('birth_year');
-            $table->string('eye_color');
-            $table->string('gender');
+            $table->string('classification');
+            $table->string('designation');
+            $table->string('average');
             $table->string('hair_color');
-            $table->string('height');
-            $table->string('mass');
-            $table->string('skin_color');
+            $table->string('height_average');
+            $table->string('average_life');
+            $table->string('eye_colors');
+            $table->string('hair_colors');
+            $table->string('skin_colors');
+            $table->string('language');
             $table->unsignedBigInteger('homeworld');
             $table->foreign('homeworld')->references('id')->on('planets');
-            $table->string('url');
             $table->timestamps();
         });
     }
@@ -37,6 +39,6 @@ class CreatePeoplesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('peoples');
+        Schema::dropIfExists('species');
     }
 }
