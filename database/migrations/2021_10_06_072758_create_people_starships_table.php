@@ -18,7 +18,7 @@ class CreatePeopleStarshipsTable extends Migration
             $table->timestamps();
 
             $table->foreignId('starship')->constrained('starships')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('character')->constrained('people')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('people')->constrained('people')->onUpdate('cascade')->onDelete('cascade');
 
         });
     }
