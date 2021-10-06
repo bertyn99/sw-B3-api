@@ -11,14 +11,18 @@ class Planet extends Model
 
     protected $fillable = [
         'id',
+        'name',
+        'model',
+        'lenght',
         'film',
         'people',
+
 
     ];
     public function residents()
     {
 
-        return $this->hasMany(People::class);
+        return $this->belongsToMany(People::class, 'planets_peoples', 'people', 'planet');
 
     }
 
