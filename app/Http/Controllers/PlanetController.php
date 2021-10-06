@@ -18,8 +18,6 @@ class PlanetController extends Controller
            public function show($id) {
               $exemple = Planet::find($id);
               return response()->json($exemple,200);
-              $ex = Planet::find($name);
-              return response()->json($name,200);
            }
            public function edit($id) {
               echo 'edit';
