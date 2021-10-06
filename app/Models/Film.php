@@ -22,26 +22,26 @@ class Film extends Model
 
     public function starship()
     {
-        return $this->belongsToMany(Starship_film::class, 'starships_films', 'film', 'id');
+        return $this->belongsToMany(Starship::class, 'starships_films', 'starship', 'film');
     }
     
     public function people()
     {
-        return $this->belongsToMany(People_film::class, 'people_films', 'film', 'id');
+        return $this->belongsToMany(People::class, 'people_films', 'people', 'film');
     }
 
     public function vehicle()
     {
-        return $this->belongsToMany(Vehicle_film::class, 'vehicles_films', 'film', 'id');
+        return $this->belongsToMany(Vehicle_film::class, 'vehicles_films', 'vehicle', 'film');
     }
 
     public function specie()
     {
-        return $this->belongsToMany(Specie_film::class, 'species_films', 'film', 'id');
+        return $this->belongsToMany(Specie_film::class, 'species_films', 'specie', 'film');
     }
 
     public function planet()
     {
-        return $this->belongsToMany(Planet_film::class, 'planets_films', 'film', 'id');
+        return $this->belongsToMany(Planet_film::class, 'planets_films', 'planet', 'film');
     }
 }
