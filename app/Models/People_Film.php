@@ -21,5 +21,4 @@ class People_Film extends Model
     public function film(){
         return $this->belongsTo(Film::class,'films','id','film');
     }
-    
 }
