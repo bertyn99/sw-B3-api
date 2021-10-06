@@ -18,7 +18,7 @@ class Vehicle extends Model
     public function peoples()
     {
 
-        return $this->belongsToMany(Peoples::class, 'pilot');
+        return $this->belongsToMany(Peoples::class, 'peoples_vehicles', 'pilot', 'vehicle');
 
     }
 }

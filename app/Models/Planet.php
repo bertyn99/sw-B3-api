@@ -18,7 +18,7 @@ class Planet extends Model
     public function peoples()
     {
 
-        return $this->belongsToMany(People::class);
+        return $this->belongsToMany(People::class, 'planets_peoples', 'people', 'planet');
 
     }
 
