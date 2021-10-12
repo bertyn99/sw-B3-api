@@ -11,6 +11,7 @@ class Starship extends Model
     protected $table = 'starships';
 
     protected $fillable = [
+        'id',
         'name',
         'model',
         'manufacturer',

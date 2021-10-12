@@ -11,6 +11,7 @@ class Film extends Model
 
     
     protected $fillable = [
+        'id',
         'title',
         'episode_id',
         'opening_crawl',
