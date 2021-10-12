@@ -14,9 +14,15 @@ class Planet extends Model
         'id',
         'name',
         'model',
-        'lenght',
-        'film',
-        'people',
+        'diameter',
+        'rotation_period',
+        'orbital_period',
+        'gravity',
+        'population',
+        'climate',
+        'terrain',
+        'surface_water',
+        'url',
 
 
     ];
