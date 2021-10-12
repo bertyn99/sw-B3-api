@@ -9,7 +9,7 @@ class Vehicle extends Model
 {
     use HasFactory;
     protected $table = 'vehicles';
-
+    protected $hidden = ['pivot'];
     protected $fillable = [
         'id',
         'name',
