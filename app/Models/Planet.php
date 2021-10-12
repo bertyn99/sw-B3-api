@@ -9,6 +9,7 @@ class Planet extends Model
 {
     use HasFactory;
     protected $table = 'planets';
+    protected $hidden = [ 'pivot'];
 
     protected $fillable = [
         'id',

@@ -5,13 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Vehicle;
+
 
 class VehicleController extends Controller
 {
     public function index()
     {
         //liste de tous les élements
-       return response()->json(Vehicle::all());
+        $vehicle = Vehicle::with(['peoples:url' ])->get() ; 
+
+       //return response()->json(Vehicle::all());
+       return response()->json($vehicle)
     }
 
     public function store(Request $request)
@@ -21,8 +26,8 @@ class VehicleController extends Controller
 
     public function show($id)
     {
-              $exemple = Vehicle::find($id);
-              return response()->json($exemple,200);
+              $vehicle = Vehicle::find($id);
+              return response()->json($vehicle,200);
     }
     public function edit($id)
     {
