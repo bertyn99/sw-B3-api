@@ -17,9 +17,19 @@ class PeopleController extends Controller
              echo 'store';
            }
            public function show($id) {
-                 return response()->json(People::find($id));
-              
+               $person = People::find($id);
+             //
+            if (is_array($person->vehicles)) {
+                foreach ($person->verhicles as $vehicule) {
+               
+             }
+            }else{
+               info('hh');
+            }
+            
+               return response()->json($person);
            }
+
            public function edit($id) {
               echo 'edit';
            }
