@@ -9,13 +9,22 @@ class Vehicle extends Model
 {
     use HasFactory;
     protected $table = 'vehicles';
-
-    protected $table='vehicles';
+    protected $hidden = ['pivot'];
     protected $fillable = [
         'id',
         'name',
-        'pilot',
-        'vehicule',
+        'model',
+        'vehicle_class',
+        'manufactor',
+        'lenght',
+        'cost_in_credi',
+        'crew',
+        'passenger',
+        'max_atmosphere',
+        'cargo_capacity',
+        'consumables',
+        'url',
+
 
     ];
     public function peoples()

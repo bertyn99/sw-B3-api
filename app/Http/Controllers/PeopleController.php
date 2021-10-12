@@ -10,16 +10,19 @@ class PeopleController extends Controller
     //
     public function index() {
         //liste de tous les élements
-             return response()->json(People::all());
+        $person = People::with(['vehicles:url','species', 'homeworld'])->get();
+             return response()->json($person);
            }
         
            public function store(Request $request) {
              echo 'store';
            }
            public function show($id) {
-                 return response()->json(People::find($id));
-              
+               $person = People::with(['vehicles:url','species', 'homeworld'])->find($id);
+             //
+               return response()->json($person);
            }
+
            public function edit($id) {
               echo 'edit';
            }

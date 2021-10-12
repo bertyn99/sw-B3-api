@@ -3,21 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Planet;
+
 
 class PlanetController extends Controller
 {
     public function index() {
         //liste de tous les élements
-             return response()->json(Planet::all());
+        $planet = Planet::with(['residents:url', 'films:url', 'species:url' ])->get() ; 
+
+        return response()->json($planet) ; 
+             //return response()->json(Planet::all());
            }
 
            public function store(Request $request) {
-             echo 'store'
+             echo 'store';
             }
            }
            public function show($id) {
-              $exemple = Planet::find($id);
-              return response()->json($exemple,200);
+              $planet = Planet::find($id);
+
+              //$planet->films ;
+
+              return response()->json($planet,200);
            }
            public function edit($id) {
               echo 'edit';

@@ -9,7 +9,7 @@ class People extends Model
 {
     use HasFactory;
     protected $table = 'peoples';
-
+    protected $hidden = ['pivot'];
     protected $fillable = [
         'id',
         'name',
