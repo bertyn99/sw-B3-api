@@ -32,8 +32,16 @@ class Starship extends Model
         //(class pointe, table pointe, colonne pointe, colonne depart)
     }
 
+    public function filmUrl(){
+        return $this->belongsToMany(Starship::class, 'starships_films', 'film', 'starship')->select('url');
+    }
+
     public function people()
     {
         return $this->belongsToMany(People::class, 'people_starships', 'people', 'starship');
+    }
+
+    public function peopleUrl(){
+        return $this->belongsToMany(People::class, 'people_starships', 'people', 'starship')->select('url');
     }
 }
