@@ -18,15 +18,8 @@ class PeopleController extends Controller
              echo 'store';
            }
            public function show($id) {
-               $person = People::find($id);
+               $person = People::with(['vehicles:url','species', 'homeworld'])->find($id);
              //
-             $person->vehicles;
-            
-                foreach ($person->verhicles as $vehicule) {
-               
-             }
-            
-            
                return response()->json($person);
            }
 
