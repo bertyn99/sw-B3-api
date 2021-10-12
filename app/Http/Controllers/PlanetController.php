@@ -21,7 +21,7 @@ class PlanetController extends Controller
             }
            }
            public function show($id) {
-              $planet = Planet::find($id);
+            $planet = Planet::with(['residents:url','films:url', 'species:url'])->find($id);
 
               //$planet->films ;
 
