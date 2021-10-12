@@ -9,7 +9,8 @@ class Film extends Model
 {
     use HasFactory;
 
-    
+    protected $hidden = [ 'pivot'];
+
     protected $fillable = [
         'id',
         'title',
