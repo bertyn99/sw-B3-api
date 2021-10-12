@@ -13,6 +13,11 @@ class FilmController extends Controller
    }
    public function show($id) {
       $film = Film::find($id);
+      dd($film->starshipURL);
+      dd($film->peopleURL);
+      dd($film->vehicleURL);
+      dd($film->specieURL);
+      dd($film->planetURL);
       return response()->json($film,200);
    }
 }
