@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Specie extends Model
 {
     use HasFactory;
-    use HasFactory;
-    protected $hidden = [ 'pivot'];
-
+  
+    protected $table='species';
+    protected $hidden = ['pivot'];
     protected $fillable = [
         'id',
         'name',
@@ -23,7 +23,6 @@ class Specie extends Model
         'average_life',
         'language',
         'skin_colors',
-
     ];
 
     public function homeworld(){
