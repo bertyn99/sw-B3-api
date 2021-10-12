@@ -17,7 +17,7 @@ class Vehicle extends Model
         'vehicle_class',
         'manufactor',
         'lenght',
-        'cost_in_credi',
+        'cost_in_credit',
         'crew',
         'passenger',
         'max_atmosphere',
