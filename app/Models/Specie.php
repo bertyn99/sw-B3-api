@@ -23,6 +23,8 @@ class Specie extends Model
         'average_life',
         'language',
         'skin_colors',
+        'url',
+
     ];
 
     public function homeworld(){
