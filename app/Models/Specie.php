@@ -12,16 +12,17 @@ class Specie extends Model
 
     protected $fillable = [
         'id',
-        'film',
-        'people',
         'name',
-        'birth_year',
-        'eye_color',
-        'gender',
-        'hair_color',
+        'classification',
+        'designation',
+        'height_average',
+        'hair_colors',
+        'eye_colors',
         'height',
-        'mass',
-        'skin_color',
+        'average_life',
+        'language',
+        'skin_colors',
+
     ];
 
     public function homeworld(){

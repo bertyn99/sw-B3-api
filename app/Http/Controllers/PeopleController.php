@@ -10,7 +10,8 @@ class PeopleController extends Controller
     //
     public function index() {
         //liste de tous les élements
-             return response()->json(People::all());
+        $person = People::with(['vehicles:url','species', 'homeworld'])->get();
+             return response()->json($person);
            }
         
            public function store(Request $request) {
@@ -19,13 +20,12 @@ class PeopleController extends Controller
            public function show($id) {
                $person = People::find($id);
              //
-            if (is_array($person->vehicles)) {
+             $person->vehicles;
+            
                 foreach ($person->verhicles as $vehicule) {
                
              }
-            }else{
-               info('hh');
-            }
+            
             
                return response()->json($person);
            }
