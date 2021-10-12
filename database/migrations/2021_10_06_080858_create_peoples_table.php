@@ -25,6 +25,7 @@ class CreatePeoplesTable extends Migration
             $table->string('skin_color');
             $table->unsignedBigInteger('homeworld');
             $table->foreign('homeworld')->references('id')->on('planets');
+            
             $table->string('url');
             $table->timestamps();
         });

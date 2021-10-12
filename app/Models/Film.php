@@ -9,7 +9,9 @@ class Film extends Model
 {
     use HasFactory;
 
+
     protected $table ='films';   
+    protected $hidden = ['pivot'];
     protected $fillable = [
         'title',
         'episode_id',

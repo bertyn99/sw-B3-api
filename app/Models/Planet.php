@@ -9,14 +9,21 @@ class Planet extends Model
 {
     use HasFactory;
     protected $table = 'planets';
+    protected $hidden = [ 'pivot'];
 
     protected $fillable = [
         'id',
         'name',
         'model',
-        'lenght',
-        'film',
-        'people',
+        'diameter',
+        'rotation_period',
+        'orbital_period',
+        'gravity',
+        'population',
+        'climate',
+        'terrain',
+        'surface_water',
+        'url',
 
 
     ];
@@ -30,5 +37,10 @@ class Planet extends Model
     public function films()
     {
         return $this->belongsToMany(Film::class);
+    }
+
+    public function species()
+    {
+        return $this->hasMany(Specie::class);
     }
 }
