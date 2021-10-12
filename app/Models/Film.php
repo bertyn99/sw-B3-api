@@ -42,28 +42,28 @@ class Film extends Model
 
     public function vehicle()
     {
-        return $this->belongsToMany(Vehicle::class, 'vehicles', 'vehicle', 'film');
+        return $this->belongsToMany(Vehicle::class, 'vehicles_films', 'vehicle', 'film');
     }
 
     public function vehicleUrl(){
-        return $this->belongsToMany(Vehicle::class, 'vehicles', 'vehicle', 'film')->select('url');
+        return $this->belongsToMany(Vehicle::class, 'vehicles_films', 'vehicle', 'film')->select('url');
     }
 
     public function specie()
     {
-        return $this->belongsToMany(Specie::class, 'species', 'specie', 'film');
+        return $this->belongsToMany(Specie::class, 'species_films', 'specie', 'film');
     }
 
     public function specieUrl(){
-        return $this->belongsToMany(Specie::class, 'species', 'specie', 'film')->select('url');
+        return $this->belongsToMany(Specie::class, 'species_films', 'specie', 'film')->select('url');
     }
 
     public function planet()
     {
-        return $this->belongsToMany(Planet::class, 'planets', 'planet', 'film');
+        return $this->belongsToMany(Planet::class, 'planets_films', 'planet', 'film');
     }
 
     public function planetUrl(){
-        return $this->belongsToMany(Planet::class, 'planets', 'planet', 'film')->select('url');
+        return $this->belongsToMany(Planet::class, 'planets_films', 'planet', 'film')->select('url');
     }
 } 

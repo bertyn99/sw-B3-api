@@ -12,6 +12,8 @@ class StarshipController extends Controller
        }
        public function show($id) {
           $starship = Starship::find($id);
+          dd($starship->filmURL);
+          dd($starship->peopleUrl);
           return response()->json($starship,200);
        }
 }
