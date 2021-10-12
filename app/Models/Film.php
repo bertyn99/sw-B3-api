@@ -13,6 +13,7 @@ class Film extends Model
     protected $table ='films';   
     protected $hidden = ['pivot'];
     protected $fillable = [
+        'id',
         'title',
         'episode_id',
         'opening_crawl',

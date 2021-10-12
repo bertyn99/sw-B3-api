@@ -8,9 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Starship extends Model
 {
     use HasFactory;
-    protected $hidden = [ 'pivot'];
+  
+    protected $table = 'starships';
+    protected $hidden = ['pivot'];
 
     protected $fillable = [
+        'id',
         'name',
         'model',
         'manufacturer',
