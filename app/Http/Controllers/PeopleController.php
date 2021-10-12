@@ -3,21 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\People;
 
-class PlanetController extends Controller
+class PeopleController extends Controller
 {
+    //
     public function index() {
         //liste de tous les élements
-             return response()->json(Planet::all());
+             return response()->json(People::all());
            }
-
+        
            public function store(Request $request) {
-             echo 'store'
-            }
+             echo 'store';
            }
            public function show($id) {
-              $exemple = Planet::find($id);
-              return response()->json($exemple,200);
+                 return response()->json(People::find($id));
+              
            }
            public function edit($id) {
               echo 'edit';
@@ -28,5 +29,5 @@ class PlanetController extends Controller
            public function destroy($id) {
               echo 'destroy';
            }
-        }
+
 }
