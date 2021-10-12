@@ -14,6 +14,17 @@ class Specie extends Model
         'id',
         'film',
         'people',
-
+        'name',
+        'birth_year',
+        'eye_color',
+        'gender',
+        'hair_color',
+        'height',
+        'mass',
+        'skin_color',
     ];
+
+    public function homeworld(){
+        return $this->belongsTo(Planet::class);
+    }
 }
