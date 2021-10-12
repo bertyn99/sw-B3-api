@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/people', ['App\Http\Controllers\PeopleController', 'index']);
 Route::get('/people/{id}', ['App\Http\Controllers\PeopleController', 'show']);
-Route::get('/film',['App\Http\Controllers\FilmControler','index']);
-Route::get('/film/{id}',['App\Http\Controllers\FilmControler','show']);
+Route::get('/film',['App\Http\Controllers\FilmController','index']);
+Route::get('/film/{id}',['App\Http\Controllers\FilmController','show']);

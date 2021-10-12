@@ -44,4 +44,7 @@ class Film extends Model
     {
         return $this->belongsToMany(Planet_film::class, 'planets_films', 'planet', 'film');
     }
-}
+    /*public function filmUrl(){
+        return $this->
+    }*/
+} 
