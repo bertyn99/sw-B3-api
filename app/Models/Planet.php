@@ -37,4 +37,9 @@ class Planet extends Model
     {
         return $this->belongsToMany(Film::class);
     }
+
+    public function species()
+    {
+        return $this->hasMany(Specie::class);
+    }
 }
