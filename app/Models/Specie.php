@@ -9,6 +9,7 @@ class Specie extends Model
 {
     use HasFactory;
     use HasFactory;
+    protected $hidden = [ 'pivot'];
 
     protected $fillable = [
         'id',
