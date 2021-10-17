@@ -7,7 +7,39 @@ use App\Models\People;
 
 class PeopleController extends Controller
 {
-    //
+     /**
+     * @OA\Get(
+     *      path="/people",
+     *      operationId="getAllPeople",
+     *      tags={"Tests"},
+
+     *      summary="Get List Of People",
+     *      description="Returns all people and associated vehicle, specie.",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     * @OA\Response(
+     *      response=400,
+     *      description="Bad Request"
+     *   ),
+     * @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *  )
+     */
     public function index() {
         //liste de tous les élements
         $person = People::with(['vehicles:url','species', 'homeworld'])->get();
