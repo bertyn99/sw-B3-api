@@ -11,6 +11,17 @@ use Validator;
 class AuthController extends Controller
 {
     /**
+     * @OA\SecurityScheme(
+     * type="http",
+     * description="Authentification Bearer Token",
+     * name="Authentification Bearer Token",
+     * in="header",
+     * scheme="bearer",
+     * bearerFormat="JWT",
+     * securityScheme="apiAuth",
+     * )
+     */
+    /**
    * @OA\Get(
    *      path="/AuthController",
    *      operationId="Authentification",

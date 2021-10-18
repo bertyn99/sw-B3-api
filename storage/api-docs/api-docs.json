@@ -480,6 +480,18 @@
             }
         }
     },
+    "components": {
+        "securitySchemes": {
+            "apiAuth": {
+                "type": "http",
+                "description": "Authentification Bearer Token",
+                "name": "Authentification Bearer Token",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
     "security": [
         []
     ]
