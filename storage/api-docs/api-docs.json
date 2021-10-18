@@ -156,7 +156,12 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
             }
         },
         "/film/{id}": {
@@ -196,7 +201,12 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
             }
         },
         "/people": {
@@ -226,7 +236,12 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
             }
         },
         "/people/{id}": {
@@ -266,7 +281,12 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
             }
         },
         "/planet": {
@@ -296,7 +316,12 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
             }
         },
         "/planet/{id}": {
@@ -336,7 +361,12 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
             }
         },
         "/starship": {
@@ -366,7 +396,12 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
             }
         },
         "/starship/{id}": {
@@ -406,7 +441,12 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
             }
         },
         "/vehicle": {
@@ -436,7 +476,12 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
             }
         },
         "/vehicle/{id}": {
@@ -476,7 +521,12 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
             }
         }
     },

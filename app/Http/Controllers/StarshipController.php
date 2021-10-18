@@ -16,6 +16,7 @@ class StarshipController extends Controller
 
    *      summary="Get List Of Starship",
    *      description="Returns all starship and associated people, film",
+   * 
    *      @OA\Response(
    *          response=200,
    *          description="Successful operation",
@@ -23,6 +24,7 @@ class StarshipController extends Controller
    *           mediaType="application/json",
    *      )
    *      ),
+   *      security={{"apiAuth":{}}},
    *      @OA\Response(
    *          response=401,
    *          description="Unauthenticated",
@@ -62,6 +64,7 @@ class StarshipController extends Controller
    *           type="string"
    *           )
    *        ),
+   *        security={{"apiAuth":{}}},
    * @OA\Response(
    *          response=200,
    *          description="Successful operation",
