@@ -23,6 +23,7 @@ class PeopleController extends Controller
    *           mediaType="application/json",
    *      )
    *      ),
+   *      security={{"apiAuth":{}}},
    *      @OA\Response(
    *          response=401,
    *          description="Unauthenticated",
@@ -69,6 +70,7 @@ class PeopleController extends Controller
    *           type="string"
    *           )
    *        ),
+   *        security={{"apiAuth":{}}},
    * @OA\Response(
    *          response=200,
    *          description="Successful operation",

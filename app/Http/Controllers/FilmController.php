@@ -22,6 +22,7 @@ class FilmController extends Controller
    *           mediaType="application/json",
    *      )
    *      ),
+   *     security={{"apiAuth":{}}},
    *      @OA\Response(
    *          response=401,
    *          description="Unauthenticated",
@@ -61,6 +62,7 @@ class FilmController extends Controller
    *           type="string"
    *           )
    *        ),
+   *        security={{"apiAuth":{}}},
    * @OA\Response(
    *          response=200,
    *          description="Successful operation",
