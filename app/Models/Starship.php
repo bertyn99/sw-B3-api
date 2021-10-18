@@ -26,6 +26,7 @@ class Starship extends Model
         'MGLT',
         'cargo_capacity',
         'consumables',
+        'starship_class',
         'url',
     ];
 
