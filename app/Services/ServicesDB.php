@@ -22,6 +22,7 @@ class ServicesDB
         $full_path = $this->url;
         $full_path .= $uri;
         $response = $this->http->get($full_path, [
+            'verify' => false,
             'timeout'         => 30,
             'connect_timeout' => true,
             'http_errors'     => true,
@@ -32,7 +33,8 @@ class ServicesDB
 
     public function parseData (String $data)
     {
-        return json_decode($data->results);
+        $parsedData = json_decode($data);
+        return $parsedData->results;
         
     }
 
@@ -146,7 +148,7 @@ class ServicesDB
     {
         $data = $this->getData("/films");
         $data = $this->parseData($data);
-        //$this->saveToBDD($data);
+        $this->saveToBDD($data, 'film');
     }
 
     public function parseLink (String $link)
