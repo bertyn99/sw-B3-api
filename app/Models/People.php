@@ -15,7 +15,7 @@ class People extends Model
         'name',
         'birth_year',
         'eye_color',
-        'hair_color0',
+        'hair_color',
         'height',
         'mass',
         'skin_color',

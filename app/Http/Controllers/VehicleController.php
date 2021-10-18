@@ -13,7 +13,7 @@ class VehicleController extends Controller
     public function index()
     {
         //liste de tous les élements
-        $vehicle = Vehicle::with(['peoples:url' ])->get() ; 
+        $vehicle = Vehicle::with(['peoples:url'])->get() ; 
 
        //return response()->json(Vehicle::all());
        return response()->json($vehicle)
@@ -26,8 +26,8 @@ class VehicleController extends Controller
 
     public function show($id)
     {
-              $vehicle = Vehicle::find($id);
-              return response()->json($vehicle,200);
+        $vehicle = Vehicle::with(['peples:url'])->find($id);
+        return response()->json($vehicle,200);
     }
     public function edit($id)
     {
