@@ -18,6 +18,7 @@ class People extends Model
         'hair_color',
         'height',
         'mass',
+        'gender',
         'skin_color',
         'url'
     ];

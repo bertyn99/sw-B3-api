@@ -30,7 +30,6 @@ class CreateStarshipsTable extends Migration
             $table->string('MGLT');
             $table->string('cargo_capacity');
             $table->string('consumables');
-            $table->string('starship_class');
 
             //$table->bigInteger('films');
             //$table->bigInteger('pilots');

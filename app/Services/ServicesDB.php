@@ -22,7 +22,17 @@ class ServicesDB
         $this->http = new Client() ;
         
     }
-
+    public function parseLink ($link)
+    {
+        if(!is_null($link)){
+            $linkExploded = explode("/", $link);
+            return $linkExploded[count($linkExploded) - 2];
+        }
+        else{
+            return null;
+        }
+         
+    }
     public function getData(String $uri )
     {
         $full_path = $this->url;
@@ -41,7 +51,6 @@ class ServicesDB
     {
         $parsedData = json_decode($data);
         return $parsedData->results;
-        
     }
 
     public function saveToBDD ($tableau, $nomTable)
@@ -61,6 +70,7 @@ class ServicesDB
                 }
             break;
             case 'people': 
+                
                 foreach($tableau as $object){
                     $people = new People;
                     $people->name = $object->name;
@@ -69,8 +79,9 @@ class ServicesDB
                     $people->hair_color = $object->hair_color;
                     $people->height = $object->height;
                     $people->mass = $object->mass;
+                    $people->gender = $object->gender;
                     $people->skin_color = $object->skin_color;
-                    $people->homeworld = parseLink($object->homeworld);
+                    $people->homeworld = $this->parseLink($object->homeworld);
                     $people->url = $object->url;
                     
                     $people->save();
@@ -79,14 +90,16 @@ class ServicesDB
             case 'specie': 
                 foreach($tableau as $object){
                     $specie = new Specie;
+                    $specie->name = $object->name;
                     $specie->classification = $object->classification;
                     $specie->designation = $object->designation;
                     $specie->height_average = $object->average_height;
-                    $specie->hair_color = $object->hair_color;
+                    $specie->hair_colors = $object->hair_colors;
                     $specie->eye_colors = $object->eye_colors;
                     $specie->average_life = $object->average_lifespan;
                     $specie->language = $object->language;
                     $specie->skin_colors = $object->skin_colors;
+                    $specie->homeworld = $this->parseLink($object->homeworld);
                     $specie->url = $object->url;
                     $specie->save();
                 }
@@ -135,7 +148,7 @@ class ServicesDB
                     $vehicle->vehicle_class = $object->vehicle_class;
                     $vehicle->manufactor = $object->manufacturer;
                     $vehicle->lenght = $object->length;
-                    $vehicle->cost_in_credit = $object->cost_in_credits;
+                    $vehicle->cost_in_credits = $object->cost_in_credits;
                     $vehicle->crew = $object->crew;
                     $vehicle->passenger = $object->passengers;
                     $vehicle->max_atmosphere = $object->max_atmosphering_speed;
@@ -155,12 +168,26 @@ class ServicesDB
         $data = $this->getData("/films");
         $data = $this->parseData($data);
         $this->saveToBDD($data, 'film');
-    }
 
-    public function parseLink (String $link)
-    {
-        $linkExploded = explode("/", $link);
-        return $linkExploded[count($linkExploded) - 2]; 
+        $data = $this->getData("/people");
+        $data = $this->parseData($data);
+        $this->saveToBDD($data, 'people');
+
+        $data = $this->getData("/planets");
+        $data = $this->parseData($data);
+        $this->saveToBDD($data, 'planet');
+
+        $data = $this->getData("/species");
+        $data = $this->parseData($data);
+        $this->saveToBDD($data, 'specie');
+
+        $dta = $this->getData("/starships");
+        $data = $this->parseData($data);
+        $this->saveToBDD($data, 'starship');
+
+        $data = $this->getData("/vehicles");
+        $data = $this->parseData($data);
+        $this->saveToBDD($data, 'vehicle');
     }
 }
 
