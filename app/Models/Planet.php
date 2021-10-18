@@ -14,7 +14,6 @@ class Planet extends Model
     protected $fillable = [
         'id',
         'name',
-        'model',
         'diameter',
         'rotation_period',
         'orbital_period',

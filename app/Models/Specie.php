@@ -19,7 +19,6 @@ class Specie extends Model
         'height_average',
         'hair_colors',
         'eye_colors',
-        'height',
         'average_life',
         'language',
         'skin_colors',
