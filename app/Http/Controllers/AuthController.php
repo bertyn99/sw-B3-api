@@ -54,7 +54,7 @@ class AuthController extends Controller
 
      /**
    * @OA\Get(
-   *      path="/login/{request}",
+   *      path="/AuthController/login/{request}",
    *      operationId="getAToken",
    *      tags={"Tests"},
 
@@ -118,7 +118,7 @@ class AuthController extends Controller
 
     /**
    * @OA\Get(
-   *      path="/register/{request}",
+   *      path="/AuthController/register/{request}",
    *      operationId="registerAUser",
    *      tags={"Tests"},
 
