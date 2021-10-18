@@ -10,7 +10,39 @@ use Validator;
 
 class AuthController extends Controller
 {
-    
+    /**
+   * @OA\Get(
+   *      path="/AuthController",
+   *      operationId="Authentification",
+   *      tags={"Tests"},
+
+   *      summary="Create New AuthController ",
+   *      description="Create new Authentification ",
+   *      @OA\Response(
+   *          response=200,
+   *          description="Successful operation",
+   *          @OA\MediaType(
+   *           mediaType="application/json",
+   *      )
+   *      ),
+   *      @OA\Response(
+   *          response=401,
+   *          description="Unauthenticated",
+   *      ),
+   *      @OA\Response(
+   *          response=403,
+   *          description="Forbidden"
+   *      ),
+   * @OA\Response(
+   *      response=400,
+   *      description="Bad Request"
+   *   ),
+   * @OA\Response(
+   *      response=404,
+   *      description="not found"
+   *   ),
+   *  )
+   */
     /**
      * Create a new AuthController instance.
      *
@@ -19,6 +51,48 @@ class AuthController extends Controller
     public function __construct() {
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
+
+     /**
+   * @OA\Get(
+   *      path="/login/{request}",
+   *      operationId="getAToken",
+   *      tags={"Tests"},
+
+   *      summary="Get a JWT",
+   *      description="Returns a new Token ",
+   *      @OA\Parameter(
+   *        name="request",
+   *        in="path",
+   *        required=true,
+   *        @OA\Schema(
+   *           type="string"
+   *           )
+   *        ),
+   * @OA\Response(
+   *          response=200,
+   *          description="Successful operation",
+   *          @OA\MediaType(
+   *           mediaType="application/json",
+   *        )
+   *      ),
+   *      @OA\Response(
+   *          response=401,
+   *          description="Unauthenticated",
+   *      ),
+   *      @OA\Response(
+   *          response=403,
+   *          description="Forbidden"
+   *      ),
+   * @OA\Response(
+   *      response=400,
+   *      description="Bad Request"
+   *   ),
+   * @OA\Response(
+   *      response=404,
+   *      description="not found"
+   *   ),
+   *  )
+   */
 
     /**
      * Get a JWT via given credentials.
@@ -41,6 +115,48 @@ class AuthController extends Controller
 
         return $this->createNewToken($token);
     }
+
+    /**
+   * @OA\Get(
+   *      path="/register/{request}",
+   *      operationId="registerAUser",
+   *      tags={"Tests"},
+
+   *      summary="Register a User",
+   *      description="Returns a new User ",
+   *      @OA\Parameter(
+   *        name="request",
+   *        in="path",
+   *        required=true,
+   *        @OA\Schema(
+   *           type="string"
+   *           )
+   *        ),
+   * @OA\Response(
+   *          response=200,
+   *          description="Successful operation",
+   *          @OA\MediaType(
+   *           mediaType="application/json",
+   *        )
+   *      ),
+   *      @OA\Response(
+   *          response=401,
+   *          description="Unauthenticated",
+   *      ),
+   *      @OA\Response(
+   *          response=403,
+   *          description="Forbidden"
+   *      ),
+   * @OA\Response(
+   *      response=400,
+   *      description="Bad Request"
+   *   ),
+   * @OA\Response(
+   *      response=404,
+   *      description="not found"
+   *   ),
+   *  )
+   */
 
     /**
      * Register a User.

@@ -44,20 +44,8 @@ class FilmController extends Controller
     //liste de tous les élements
      return response()->json(Film::all());
    }
-   public function show($id) {
-      $film = Film::find($id);
-      dd($film->starshipURL);
-      dd($film->peopleURL);
-      dd($film->vehicleURL);
-      dd($film->specieURL);
-      dd($film->planetURL);
-      return response()->json($film,200);
-   }
-   public function store(Request $request) 
-   {
-      echo 'store';
-   }
-   /**
+
+    /**
    * @OA\Get(
    *      path="/film/{id}",
    *      operationId="getAFilm",
@@ -98,4 +86,18 @@ class FilmController extends Controller
    *   ),
    *  )
    */
+   public function show($id) {
+      $film = Film::find($id);
+      dd($film->starshipURL);
+      dd($film->peopleURL);
+      dd($film->vehicleURL);
+      dd($film->specieURL);
+      dd($film->planetURL);
+      return response()->json($film,200);
+   }
+   public function store(Request $request) 
+   {
+      echo 'store';
+   }
+  
 }
