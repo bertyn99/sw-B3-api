@@ -32,7 +32,7 @@ class ServicesDB
 
     public function parseData (String $data)
     {
-        return json_decode($data);
+        return json_decode($data->results);
         
     }
 
