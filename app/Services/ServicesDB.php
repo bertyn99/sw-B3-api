@@ -37,7 +37,7 @@ class ServicesDB
         $env = env('APP_URL');
         $urlExploded = explode("/", $url);
 
-        $urlReturn = $env.'/'.$urlExploded[count($urlExploded)-3].'/'.$urlExploded[count($urlExploded)-2].'/'.$urlExploded[count($urlExploded)-1].'/';
+        $urlReturn = $env.'/'.$urlExploded[count($urlExploded)-3].'/'.$urlExploded[count($urlExploded)-2].'/';
         return $urlReturn;
     }
 
@@ -73,7 +73,7 @@ class ServicesDB
                     $film->director = $object->director;
                     $film->producer = $object->producer;
                     $film->release_date = $object->release_date;
-                    $film->url = $object->url;
+                    $film->url = $this->parseUrl($object->url);
                     $film->save();
                 }
             break;
@@ -90,7 +90,7 @@ class ServicesDB
                     $people->gender = $object->gender;
                     $people->skin_color = $object->skin_color;
                     $people->homeworld = $this->parseLink($object->homeworld);
-                    $people->url = $object->url;
+                    $people->url = $this->parseUrl($object->url);
                     
                     $people->save();
                 }
@@ -108,7 +108,7 @@ class ServicesDB
                     $specie->language = $object->language;
                     $specie->skin_colors = $object->skin_colors;
                     $specie->homeworld = $this->parseLink($object->homeworld);
-                    $specie->url = $object->url;
+                    $specie->url = $this->parseUrl($object->url);
                     $specie->save();
                 }
             break;
@@ -128,7 +128,7 @@ class ServicesDB
                     $starship->cargo_capacity = $object->cargo_capacity;
                     $starship->consumables = $object->consumables;
                     $starship->starship_class = $object->starship_class;
-                    $starship->url = $object->url;
+                    $starship->url = $this->parseUrl($object->url);
                     $starship->save();
                 }
             break;
@@ -144,7 +144,7 @@ class ServicesDB
                     $planet->climate = $object->climate;
                     $planet->terrain = $object->terrain;
                     $planet->surface_water = $object->surface_water;
-                    $planet->url = $object->url;
+                    $planet->url = $this->parseUrl($object->url);
                     $planet->save();
                 }
             break;
@@ -162,7 +162,7 @@ class ServicesDB
                     $vehicle->max_atmosphere = $object->max_atmosphering_speed;
                     $vehicle->cargo_capacity = $object->cargo_capacity;
                     $vehicle->consumables = $object->consumables;
-                    $vehicle->url = $object->url;
+                    $vehicle->url = $this->parseUrl($object->url);
                     $vehicle->save();
                 }
             break;
@@ -189,7 +189,7 @@ class ServicesDB
         $data = $this->parseData($data);
         $this->saveToBDD($data, 'specie');
 
-        $dta = $this->getData("/starships");
+        $data = $this->getData("/starships");
         $data = $this->parseData($data);
         $this->saveToBDD($data, 'starship');
 
