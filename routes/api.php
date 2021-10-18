@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/people', ['App\Http\Controllers\PeopleController', 'index']);
 Route::get('/people/{id}', ['App\Http\Controllers\PeopleController', 'show']);
-
-Route::get('/planet', ['App\Http\Controllers\PeopleController', 'index']);
-Route::get('/planet/{id}', ['App\Http\Controllers\PeopleController', 'show']);
+Route::get('/film',['App\Http\Controllers\FilmController','index']);
+Route::get('/film/{id}',['App\Http\Controllers\FilmController','show']);
+Route::get('/planet', ['App\Http\Controllers\PlanetController', 'index']);
+Route::get('/planet/{id}', ['App\Http\Controllers\PlanetController', 'show']);
