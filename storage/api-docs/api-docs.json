@@ -14,7 +14,7 @@
     },
     "servers": [
         {
-            "url": "http://127.0.0.1:8000/api",
+            "url": "http://localhost:8000/api",
             "description": "Demo API Server"
         }
     ],
@@ -27,6 +27,46 @@
                 "summary": "Get List Of People",
                 "description": "Returns all people and associated vehicle, specie.",
                 "operationId": "getAllPeople",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/people/{id}": {
+            "get": {
+                "tags": [
+                    "Tests"
+                ],
+                "summary": "Get a person",
+                "description": "Returns a person and associated vehicle, specie.",
+                "operationId": "getAPerson",
+                "parameters": [
+                    {
+                        "name": "country",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation",
