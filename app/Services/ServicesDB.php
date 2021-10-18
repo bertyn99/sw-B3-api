@@ -33,6 +33,14 @@ class ServicesDB
         }
          
     }
+    public function parseUrl ($url){
+        $env = env('APP_URL');
+        $urlExploded = explode("/", $url);
+
+        $urlReturn = $env.'/'.$urlExploded[count($urlExploded)-3].'/'.$urlExploded[count($urlExploded)-2].'/'.$urlExploded[count($urlExploded)-1].'/';
+        return $urlReturn;
+    }
+
     public function getData(String $uri )
     {
         $full_path = $this->url;
