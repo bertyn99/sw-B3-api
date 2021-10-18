@@ -14,8 +14,7 @@ class VehicleController extends Controller
    * @OA\Get(
    *      path="/vehicle",
    *      operationId="getAllVehicle",
-   *      tags={"Tests"},
-
+   *      tags={"Vehicle"},
    *      summary="Get List Of Vehicle",
    *      description="Returns all vehicle and associated people",
    *      @OA\Response(
@@ -61,7 +60,7 @@ class VehicleController extends Controller
    * @OA\Get(
    *      path="/vehicle/{id}",
    *      operationId="getAVehicle",
-   *      tags={"Tests"},
+   *      tags={"Vehicle"},
 
    *      summary="Get a vehicle",
    *      description="Returns a vehicle and associated people",

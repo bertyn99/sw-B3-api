@@ -22,7 +22,7 @@
         "/AuthController": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Authentification"
                 ],
                 "summary": "Create New AuthController ",
                 "description": "Create new Authentification ",
@@ -52,7 +52,7 @@
         "/login": {
             "post": {
                 "tags": [
-                    "login"
+                    "Authentification"
                 ],
                 "summary": "Add a new login",
                 "description": "",
@@ -71,7 +71,7 @@
         "/register": {
             "post": {
                 "tags": [
-                    "register"
+                    "Authentification"
                 ],
                 "summary": "Add a new register",
                 "description": "",
@@ -90,7 +90,7 @@
         "/film": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Film"
                 ],
                 "summary": "Get List Of Film",
                 "description": "Returns all film and associated people, vehicle, specie, planet, starship",
@@ -125,7 +125,7 @@
         "/film/{id}": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Film"
                 ],
                 "summary": "Get a film",
                 "description": "Returns a film and associated people, vehicle, specie, planet, starship",
@@ -170,7 +170,7 @@
         "/people": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "People"
                 ],
                 "summary": "Get List Of People",
                 "description": "Returns all people and associated vehicle, specie.",
@@ -205,7 +205,7 @@
         "/people/{id}": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "People"
                 ],
                 "summary": "Get a person",
                 "description": "Returns a person and associated vehicle, specie.",
@@ -250,7 +250,7 @@
         "/planet": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Planet"
                 ],
                 "summary": "Get List Of Planet",
                 "description": "Returns all planet and associated people, film, specie",
@@ -285,7 +285,7 @@
         "/planet/{id}": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Planet"
                 ],
                 "summary": "Get a planet",
                 "description": "Returns a planet and associated people,film, specie.",
@@ -330,7 +330,7 @@
         "/starship": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Starship"
                 ],
                 "summary": "Get List Of Starship",
                 "description": "Returns all starship and associated people, film",
@@ -365,7 +365,7 @@
         "/starship/{id}": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Starship"
                 ],
                 "summary": "Get a starship",
                 "description": "Returns a starship and associated people, film",
@@ -410,7 +410,7 @@
         "/vehicle": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Vehicle"
                 ],
                 "summary": "Get List Of Vehicle",
                 "description": "Returns all vehicle and associated people",
@@ -445,7 +445,7 @@
         "/vehicle/{id}": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Vehicle"
                 ],
                 "summary": "Get a vehicle",
                 "description": "Returns a vehicle and associated people",

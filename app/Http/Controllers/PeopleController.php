@@ -12,7 +12,7 @@ class PeopleController extends Controller
    * @OA\Get(
    *      path="/people",
    *      operationId="getAllPeople",
-   *      tags={"Tests"},
+   *      tags={"People"},
 
    *      summary="Get List Of People",
    *      description="Returns all people and associated vehicle, specie.",
@@ -58,7 +58,7 @@ class PeopleController extends Controller
    * @OA\Get(
    *      path="/people/{id}",
    *      operationId="getAPerson",
-   *      tags={"Tests"},
+   *      tags={"People"},
 
    *      summary="Get a person",
    *      description="Returns a person and associated vehicle, specie.",

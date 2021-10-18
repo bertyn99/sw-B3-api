@@ -14,7 +14,7 @@ class PlanetController extends Controller
    * @OA\Get(
    *      path="/planet",
    *      operationId="getAllPlanet",
-   *      tags={"Tests"},
+   *      tags={"Planet"},
 
    *      summary="Get List Of Planet",
    *      description="Returns all planet and associated people, film, specie",
@@ -59,7 +59,7 @@ class PlanetController extends Controller
    * @OA\Get(
    *      path="/planet/{id}",
    *      operationId="getAPlanet",
-   *      tags={"Tests"},
+   *      tags={"Planet"},
 
    *      summary="Get a planet",
    *      description="Returns a planet and associated people,film, specie.",
