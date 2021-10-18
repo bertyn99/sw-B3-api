@@ -11,7 +11,7 @@ class FilmController extends Controller
    * @OA\Get(
    *      path="/film",
    *      operationId="getAllFilm",
-   *      tags={"Tests"},
+   *      tags={"Film"},
 
    *      summary="Get List Of Film",
    *      description="Returns all film and associated people, vehicle, specie, planet, starship",
@@ -50,7 +50,7 @@ class FilmController extends Controller
    * @OA\Get(
    *      path="/film/{id}",
    *      operationId="getAFilm",
-   *      tags={"Tests"},
+   *      tags={"Film"},
 
    *      summary="Get a film",
    *      description="Returns a film and associated people, vehicle, specie, planet, starship",

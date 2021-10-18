@@ -12,7 +12,7 @@ class StarshipController extends Controller
    * @OA\Get(
    *      path="/starship",
    *      operationId="getAllStarship",
-   *      tags={"Tests"},
+   *      tags={"Starship"},
 
    *      summary="Get List Of Starship",
    *      description="Returns all starship and associated people, film",
@@ -52,7 +52,7 @@ class StarshipController extends Controller
    * @OA\Get(
    *      path="/starship/{id}",
    *      operationId="getAStarship",
-   *      tags={"Tests"},
+   *      tags={"Starship"},
 
    *      summary="Get a starship",
    *      description="Returns a starship and associated people, film",
