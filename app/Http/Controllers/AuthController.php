@@ -63,48 +63,41 @@ class AuthController extends Controller
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 
-     /**
-   * @OA\Get(
-   *      path="/AuthController/login/{request}",
-   *      operationId="getAToken",
-   *      tags={"Tests"},
-
-   *      summary="Get a JWT",
-   *      description="Returns a new Token ",
-   *      @OA\Parameter(
-   *        name="request",
-   *        in="path",
-   *        required=true,
-   *        @OA\Schema(
-   *           type="string"
-   *           )
-   *        ),
-   * @OA\Response(
-   *          response=200,
-   *          description="Successful operation",
-   *          @OA\MediaType(
-   *           mediaType="application/json",
-   *        )
-   *      ),
-   *      @OA\Response(
-   *          response=401,
-   *          description="Unauthenticated",
-   *      ),
-   *      @OA\Response(
-   *          response=403,
-   *          description="Forbidden"
-   *      ),
-   * @OA\Response(
-   *      response=400,
-   *      description="Bad Request"
-   *   ),
-   * @OA\Response(
-   *      response=404,
-   *      description="not found"
-   *   ),
-   *  )
-   */
-
+    /**
+     * 
+     * @OA\Post(
+     *     path="/login",
+     *     tags={"login"},
+     *     operationId="addLogin",
+     *     summary="Add a new login",
+     *     description="",
+     *     @OA\RequestBody(
+     *         description="Get a Login",
+     *         required=true,
+     *    			@OA\Schema(
+     *    				 @OA\Property(property="email",
+     *    					type="string",
+     *    					description="email"
+     *    				),
+     *         ),
+     *     ),
+     *     @OA\RequestBody(
+     *         description="Get a password",
+     *         required=true,
+     *    			@OA\Schema(
+     *    				 @OA\Property(property="password",
+     *    					type="string",
+     *    					description="password"
+     *    				),
+     *      ),
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input",
+     *     ),
+     * )
+     */
+    
     /**
      * Get a JWT via given credentials.
      *
@@ -126,48 +119,50 @@ class AuthController extends Controller
 
         return $this->createNewToken($token);
     }
-
-    /**
-   * @OA\Get(
-   *      path="/AuthController/register/{request}",
-   *      operationId="registerAUser",
-   *      tags={"Tests"},
-
-   *      summary="Register a User",
-   *      description="Returns a new User ",
-   *      @OA\Parameter(
-   *        name="request",
-   *        in="path",
-   *        required=true,
-   *        @OA\Schema(
-   *           type="string"
-   *           )
-   *        ),
-   * @OA\Response(
-   *          response=200,
-   *          description="Successful operation",
-   *          @OA\MediaType(
-   *           mediaType="application/json",
-   *        )
-   *      ),
-   *      @OA\Response(
-   *          response=401,
-   *          description="Unauthenticated",
-   *      ),
-   *      @OA\Response(
-   *          response=403,
-   *          description="Forbidden"
-   *      ),
-   * @OA\Response(
-   *      response=400,
-   *      description="Bad Request"
-   *   ),
-   * @OA\Response(
-   *      response=404,
-   *      description="not found"
-   *   ),
-   *  )
-   */
+ /**
+     * @OA\Post(
+     *     path="/register",
+     *     tags={"register"},
+     *     operationId="addRegister",
+     *     summary="Add a new register",
+     *     description="",
+     *      @OA\RequestBody(
+     *         description="Get a name",
+     *         required=true,
+     *    			@OA\Schema(
+     *    				 @OA\Property(property="name",
+     *    					type="string",
+     *    					description="name"
+     *    				),
+     *         ),
+     *     ),
+     *     @OA\RequestBody(
+     *         description="Get a email",
+     *         required=true,
+     *    			@OA\Schema(
+     *    				 @OA\Property(property="email",
+     *    					type="string",
+     *    					description="email"
+     *    				),
+     *         ),
+     *     ),
+     *     @OA\RequestBody(
+     *         description="Get a password",
+     *         required=true,
+     *    			@OA\Schema(
+     *    				 @OA\Property(property="password",
+     *    					type="string",
+     *    					description="password"
+     *    				),
+     *      ),
+     *     ),
+     * 
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input",
+     *     ),
+     * )
+     */
 
     /**
      * Register a User.
