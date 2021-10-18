@@ -46,6 +46,12 @@ class ServicesDB
         $data = $this->parseData($data);
         //$this->saveToBDD($data);
     }
+
+    public function parseLink (String $link)
+    {
+        $linkExploded = explode("/", $link);
+        return $linkExploded[count($linkExploded) - 2]; 
+    }
 }
 
 
