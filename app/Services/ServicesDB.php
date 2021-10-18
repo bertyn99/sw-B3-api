@@ -30,9 +30,10 @@ class ServicesDB
     
     }
 
-    public function parseData ()
+    public function parseData (String $data)
     {
-
+        return json_decode($data->results);
+        
     }
 
     public function saveToBDD ()
@@ -41,8 +42,15 @@ class ServicesDB
     }
     public function init ()
     {
-      $data = $this->getData("/films");
-      $this->parseData($data);
+        $data = $this->getData("/films");
+        $data = $this->parseData($data);
+        //$this->saveToBDD($data);
+    }
+
+    public function parseLink (String $link)
+    {
+        $linkExploded = explode("/", $link);
+        return $linkExploded[count($linkExploded) - 2]; 
     }
 }
 
