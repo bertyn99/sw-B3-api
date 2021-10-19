@@ -46,22 +46,19 @@ class People extends Model
     ];
 
     public function homeworld(){
-        return $this->belongsTo(Planet::class, 'homeworld');
+        return $this->belongsTo(PeoplePlanet::class, 'homeworld');
     }
     public function vehicles(){
-        return $this->belongsToMany(Vehicle::class, 'peoples_vehicles','pilot','vehicle');
+        return $this->belongsTo(PeopleVehicle::class);
     }
     public function film(){
-        return $this->belongsToMany(Film::class, 'people_films','film','character');
+        return $this->belongsTo(PeopleFilm::class);
     }
     public function species(){
-        return $this->belongsToMany(Specie::class, 'people_species','specie','people');
-    }
-    public function planet(){
-        return $this->belongsTo(Planet::class, 'homeworld');
+        return $this->hasMany(PeopleSpecie::class);
     }
     public function starship(){
-        return $this->belongsToMany(Starship::class, 'people_starships','starship','people');
+        return $this->belongsTo(PeopleStarship::class);
     }
 
 }

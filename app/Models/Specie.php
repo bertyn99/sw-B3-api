@@ -53,4 +53,12 @@ class Specie extends Model
     public function homeworld(){
         return $this->belongsTo(Planet::class);
     }
+    public function films(){
+        return $this->hasMany(Film::class);
+    }
+
+    public function people(){
+        return $this->hasMany(People::class);
+    }
+  
 }
