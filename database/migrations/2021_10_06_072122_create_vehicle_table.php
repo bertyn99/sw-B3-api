@@ -20,7 +20,7 @@ class CreateVehicleTable extends Migration
             $table->string('vehicle_class');
             $table->string('manufactor');
             $table->string('lenght');
-            $table->string('cost_in_credi');
+            $table->string('cost_in_credits');
             $table->string('crew');
             $table->string('passenger');
             $table->string('max_atmosphere');

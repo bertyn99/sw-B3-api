@@ -17,7 +17,7 @@ class Vehicle extends Model
         'vehicle_class',
         'manufactor',
         'lenght',
-        'cost_in_credit',
+        'cost_in_credits',
         'crew',
         'passenger',
         'max_atmosphere',
@@ -27,10 +27,18 @@ class Vehicle extends Model
 
 
     ];
-    public function peoples()
+    public function people()
     {
 
-        return $this->belongsToMany(Peoples::class, 'peoples_vehicles', 'pilot', 'vehicle');
+        return $this->hasMany(PeopleVehicle::class);
+
+    }
+
+    public function film()
+    {
+
+        return $this->hasMany(FilmVehicle::class);
 
     }
 }
+

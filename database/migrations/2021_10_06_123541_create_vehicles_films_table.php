@@ -15,10 +15,10 @@ class CreateVehiclesFilmsTable extends Migration
     {
         Schema::create('vehicles_films', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('vehicle');
-            $table->foreign('vehicle')->references('id')->on('vehicles');
-            $table->unsignedBigInteger('film');
-            $table->foreign('film')->references('id')->on('films');
+            $table->unsignedBigInteger('vehicle_id');
+            $table->foreign('vehicle_id')->references('id')->on('vehicles');
+            $table->unsignedBigInteger('film_id');
+            $table->foreign('film_id')->references('id')->on('films');
             $table->timestamps();
         });
     }

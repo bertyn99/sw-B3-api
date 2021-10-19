@@ -25,45 +25,45 @@ class Film extends Model
 
     public function starship()
     {
-        return $this->belongsToMany(Starship::class, 'starships_films', 'starship', 'film');
+        return $this->hasMany(FilmStarship::class);
     }
     public function starshipUrl(){
-        return $this->belongsToMany(Starship::class, 'starships_films', 'starship', 'film')->select('url');
+        return $this->hasMany(FilmStarship::class)->select('url');
     }
     
     public function people()
     {
-        return $this->belongsToMany(People::class, 'people_films', 'people', 'film');
+        return $this->hasMany(PeopleFilm::class);
     }
 
     public function peopleUrl(){
-        return $this->belongsToMany(People::class, 'people_films', 'people', 'film')->select('url');
+        return $this->hasMany(PeopleFilm::class)->select('url');
     }
 
     public function vehicle()
     {
-        return $this->belongsToMany(Vehicle::class, 'vehicles_films', 'vehicle', 'film');
+        return $this->hasMany(FilmVehicle::class);
     }
 
     public function vehicleUrl(){
-        return $this->belongsToMany(Vehicle::class, 'vehicles_films', 'vehicle', 'film')->select('url');
+        return $this->hasMany(FilmVehicle::class)->select('url');
     }
 
     public function specie()
     {
-        return $this->belongsToMany(Specie::class, 'species_films', 'specie', 'film');
+        return $this->hasMany(FilmSpecie::class);
     }
 
     public function specieUrl(){
-        return $this->belongsToMany(Specie::class, 'species_films', 'specie', 'film')->select('url');
+        return $this->hasMany(FilmSpecie::class)->select('url');
     }
 
     public function planet()
     {
-        return $this->belongsToMany(Planet::class, 'planets_films', 'planet', 'film');
+        return $this->belongsToMany(FilmPlanet::class, 'planets_films', 'planet', 'film');
     }
 
     public function planetUrl(){
-        return $this->belongsToMany(Planet::class, 'planets_films', 'planet', 'film')->select('url');
+        return $this->hasMany(FIlmPlanet::class, 'planets_films', 'planet', 'film')->select('url');
     }
 } 

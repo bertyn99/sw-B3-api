@@ -15,10 +15,12 @@ class CreatePeopleStarshipsTable extends Migration
     {
         Schema::create('people_starships', function (Blueprint $table) {
 
+            $table->id();
+            $table->unsignedBigInteger('people_id');
+            $table->foreign('people_id')->references('id')->on('peoples');
+            $table->unsignedBigInteger('starship_id');
+            $table->foreign('starship_id')->references('id')->on('starships');
             $table->timestamps();
-
-            $table->foreignId('starship')->constrained('starships')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('people')->constrained('peoples')->onUpdate('cascade')->onDelete('cascade');
 
         });
     }

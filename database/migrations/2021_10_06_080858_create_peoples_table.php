@@ -23,7 +23,7 @@ class CreatePeoplesTable extends Migration
             $table->string('height');
             $table->string('mass');
             $table->string('skin_color');
-            $table->unsignedBigInteger('homeworld');
+            $table->unsignedBigInteger('homeworld')->nullable();
             $table->foreign('homeworld')->references('id')->on('planets');
             
             $table->string('url');

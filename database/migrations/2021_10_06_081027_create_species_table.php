@@ -18,16 +18,15 @@ class CreateSpeciesTable extends Migration
             $table->string('name');
             $table->string('classification');
             $table->string('designation');
-            $table->string('average');
-            $table->string('hair_color');
             $table->string('height_average');
             $table->string('average_life');
             $table->string('eye_colors');
             $table->string('hair_colors');
             $table->string('skin_colors');
             $table->string('language');
-            $table->unsignedBigInteger('homeworld');
+            $table->unsignedBigInteger('homeworld')->nullable();
             $table->foreign('homeworld')->references('id')->on('planets');
+            $table->string('url');
             $table->timestamps();
         });
     }

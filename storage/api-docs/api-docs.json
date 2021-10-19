@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Api covid19 Documentation",
+        "title": "swapi",
         "description": "Implementation of Swagger with in Laravel",
         "contact": {
             "email": "admin@admin.com"
@@ -14,19 +14,19 @@
     },
     "servers": [
         {
-            "url": "http://localhost:8000/api",
+            "url": "http://127.0.0.1:8000/api",
             "description": "Demo API Server"
         }
     ],
     "paths": {
-        "/people": {
+        "/auth/AuthController": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Authentification"
                 ],
-                "summary": "Get List Of People",
-                "description": "Returns all people and associated vehicle, specie.",
-                "operationId": "getAllPeople",
+                "summary": "Create New AuthController ",
+                "description": "Create new Authentification ",
+                "operationId": "Authentification",
                 "responses": {
                     "200": {
                         "description": "Successful operation",
@@ -49,17 +49,137 @@
                 }
             }
         },
-        "/people/{id}": {
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Authentification"
+                ],
+                "summary": "Add a new login",
+                "description": "",
+                "operationId": "addLogin",
+                "requestBody": {
+                    "description": "Get a Login",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/auth/register": {
+            "post": {
+                "tags": [
+                    "Authentification"
+                ],
+                "summary": "Add a new register",
+                "description": "",
+                "operationId": "addRegister",
+                "requestBody": {
+                    "description": "Get a name",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "format": "name"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/v1/film": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Film"
                 ],
-                "summary": "Get a person",
-                "description": "Returns a person and associated vehicle, specie.",
-                "operationId": "getAPerson",
+                "summary": "Get List Of Film",
+                "description": "Returns all film and associated people, vehicle, specie, planet, starship",
+                "operationId": "getAllFilm",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/film/{id}": {
+            "get": {
+                "tags": [
+                    "Film"
+                ],
+                "summary": "Get a film",
+                "description": "Returns a film and associated people, vehicle, specie, planet, starship",
+                "operationId": "getAFilm",
                 "parameters": [
                     {
-                        "name": "country",
+                        "name": "film",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -86,7 +206,635 @@
                     "404": {
                         "description": "not found"
                     }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/people": {
+            "get": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Get List Of People",
+                "description": "Returns all people and associated vehicle, specie.",
+                "operationId": "getAllPeople",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/people/{id}": {
+            "get": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Get a person",
+                "description": "Returns a person and associated vehicle, specie.",
+                "operationId": "getAPerson",
+                "parameters": [
+                    {
+                        "name": "people",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/planet": {
+            "get": {
+                "tags": [
+                    "Planet"
+                ],
+                "summary": "Get List Of Planet",
+                "description": "Returns all planet and associated people, film, specie",
+                "operationId": "getAllPlanet",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/planet/{id}": {
+            "get": {
+                "tags": [
+                    "Planet"
+                ],
+                "summary": "Get a planet",
+                "description": "Returns a planet and associated people,film, specie.",
+                "operationId": "getAPlanet",
+                "parameters": [
+                    {
+                        "name": "planet",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/specie": {
+            "get": {
+                "tags": [
+                    "Specie"
+                ],
+                "summary": "Get List Of Specie",
+                "description": "Returns all specie and associated people, film, planet",
+                "operationId": "getAllSpecie",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/specie/{id}": {
+            "get": {
+                "tags": [
+                    "Specie"
+                ],
+                "summary": "Get a specie",
+                "description": "Returns a specie and associated people,film, planet.",
+                "operationId": "getASpecie",
+                "parameters": [
+                    {
+                        "name": "specie",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/starship": {
+            "get": {
+                "tags": [
+                    "Starship"
+                ],
+                "summary": "Get List Of Starship",
+                "description": "Returns all starship and associated people, film",
+                "operationId": "getAllStarship",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/starship/{id}": {
+            "get": {
+                "tags": [
+                    "Starship"
+                ],
+                "summary": "Get a starship",
+                "description": "Returns a starship and associated people, film",
+                "operationId": "getAStarship",
+                "parameters": [
+                    {
+                        "name": "starship",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/vehicle": {
+            "get": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Get List Of Vehicle",
+                "description": "Returns all vehicle and associated people",
+                "operationId": "getAllVehicle",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/vehicle/{id}": {
+            "get": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Get a vehicle",
+                "description": "Returns a vehicle and associated people",
+                "operationId": "getAVehicle",
+                "parameters": [
+                    {
+                        "name": "vehicle",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "People": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": "true",
+                        "example": "1"
+                    },
+                    "name": {
+                        "description": "people name",
+                        "type": "string"
+                    },
+                    "birth_year": {
+                        "description": "People birth year",
+                        "type": "string"
+                    },
+                    "eye_color": {
+                        "description": "People eye color",
+                        "type": "string"
+                    },
+                    "hair_color": {
+                        "description": "People hair color",
+                        "type": "string"
+                    },
+                    "skin_color": {
+                        "description": "People skin color",
+                        "type": "string"
+                    },
+                    "height": {
+                        "description": "People height",
+                        "type": "string"
+                    },
+                    "mass": {
+                        "description": "People mass",
+                        "type": "string"
+                    },
+                    "gender": {
+                        "description": "People gender",
+                        "type": "string"
+                    },
+                    "hright": {
+                        "description": "People url",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Initial creation timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    },
+                    "updated_at": {
+                        "description": "Last update timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    },
+                    "deleted_at": {
+                        "description": "Soft delete timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "People"
                 }
+            },
+            "Planet": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": "true",
+                        "example": "1"
+                    },
+                    "name": {
+                        "description": "people name",
+                        "type": "string"
+                    },
+                    "diameter": {
+                        "description": "People birth year",
+                        "type": "string"
+                    },
+                    "rotation_period": {
+                        "description": "People eye color",
+                        "type": "string"
+                    },
+                    "orbital_period": {
+                        "description": "People hair color",
+                        "type": "string"
+                    },
+                    "gravity": {
+                        "description": "People skin color",
+                        "type": "string"
+                    },
+                    "population": {
+                        "description": "People height",
+                        "type": "string"
+                    },
+                    "climate": {
+                        "description": "Planet climate",
+                        "type": "string"
+                    },
+                    "terrain": {
+                        "description": "Planet terrain",
+                        "type": "string"
+                    },
+                    "surface_water": {
+                        "description": "Planet terrain",
+                        "type": "string"
+                    },
+                    "url": {
+                        "description": "People url",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Initial creation timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    },
+                    "updated_at": {
+                        "description": "Last update timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    },
+                    "deleted_at": {
+                        "description": "Soft delete timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Planet"
+                }
+            },
+            "Specie": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": "true",
+                        "example": "1"
+                    },
+                    "name": {
+                        "description": "people name",
+                        "type": "string"
+                    },
+                    "classification": {
+                        "description": "People birth year",
+                        "type": "string"
+                    },
+                    "designation": {
+                        "description": "People eye color",
+                        "type": "string"
+                    },
+                    "height_average": {
+                        "description": "People hair color",
+                        "type": "string"
+                    },
+                    "hair_colors": {
+                        "description": "People skin color",
+                        "type": "string"
+                    },
+                    "eye_colors": {
+                        "description": "People height",
+                        "type": "string"
+                    },
+                    "average_life": {
+                        "description": "Planet climate",
+                        "type": "string"
+                    },
+                    "language": {
+                        "description": "Planet terrain",
+                        "type": "string"
+                    },
+                    "skin_colors": {
+                        "description": "Planet terrain",
+                        "type": "string"
+                    },
+                    "url": {
+                        "description": "People url",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Initial creation timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    },
+                    "updated_at": {
+                        "description": "Last update timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    },
+                    "deleted_at": {
+                        "description": "Soft delete timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Planet"
+                }
+            }
+        },
+        "securitySchemes": {
+            "apiAuth": {
+                "type": "http",
+                "description": "Authentification Bearer Token",
+                "name": "Authentification Bearer Token",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
             }
         }
     },

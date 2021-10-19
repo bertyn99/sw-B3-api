@@ -15,10 +15,10 @@ class CreatePlanetsFilmsTable extends Migration
     {
         Schema::create('planets_films', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('planet');
-            $table->foreign('planet')->references('id')->on('planets');
-            $table->unsignedBigInteger('film');
-            $table->foreign('film')->references('id')->on('films');
+            $table->unsignedBigInteger('planet_id');
+            $table->foreign('planet_id')->references('id')->on('planets');
+            $table->unsignedBigInteger('film_id');
+            $table->foreign('film_id')->references('id')->on('films');
             $table->timestamps();
         });
     }
