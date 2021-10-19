@@ -96,33 +96,33 @@ class ServicesDB
                     // remplissage tables pivot
                     foreach($object->species as $objSpe){
                         $filspe = new FilmSpecie;
-                        $filspe->film = $film->id;
-                        $filspe->specie =  intval($this->parseLink($objSpe));
+                        $filspe->film_id = $film->id;
+                        $filspe->specie_id =  intval($this->parseLink($objSpe));
                         $filspe->save();
                     };
                     foreach($object->characters as $objPeo){
                         $filpeo = new PeopleFilm;
-                        $filpeo->film = $film->id;
-                        $filpeo->people =  intval($this->parseLink($objPeo));
+                        $filpeo->film_id = $film->id;
+                        $filpeo->people_id =  intval($this->parseLink($objPeo));
                         $filpeo->save();
                     };
                     foreach($object->planets as $objPla){
                         $filpla = new FilmPlanet;
-                        $filpla->film = $film->id;
-                        $filpla->planet =  intval($this->parseLink($objPla));
+                        $filpla->film_id = $film->id;
+                        $filpla->planet_id =  intval($this->parseLink($objPla));
                         $filpla->save();
                     };
                     foreach($object->starships as $objSta){
                         $filsta = new FilmStarship;
-                        $filsta->film = $film->id;
-                        $filsta->starship = intval($this->parseLink($objSta));
+                        $filsta->film_id = $film->id;
+                        $filsta->starship_id = intval($this->parseLink($objSta));
                         $filsta->save();
                     };
                     foreach($object->vehicles as $objVeh){
                         $film->vehicle()->attach(intval($this->parseLink($objVeh)));
                         $filveh = new FilmVehicle;
-                        $filveh->film = $film->id;
-                        $filveh->vehicle =  intval($this->parseLink($objVeh));
+                        $filveh->film_id = $film->id;
+                        $filveh->vehicle_id =  intval($this->parseLink($objVeh));
                         $filveh->save();
                     };
 
@@ -153,20 +153,20 @@ class ServicesDB
                     
                     foreach($object->species as $objSpe){
                         $peospe = new PeopleSpecie;
-                        $peospe->people = $people->id;
-                        $peospe->specie =  intval($this->parseLink($objSpe));
+                        $peospe->people_id = $people->id;
+                        $peospe->specie_id =  intval($this->parseLink($objSpe));
                         $peospe->save();
                     };
                     foreach($object->starships as $objSta){
                         $peosta = new PeopleStarship;
-                        $peosta->people = $people->id;
-                        $peosta->starship = intval($this->parseLink($objSta));
+                        $peosta->people_id = $people->id;
+                        $peosta->starship_id = intval($this->parseLink($objSta));
                         $peosta->save();
                     };
                     foreach($object->vehicles as $objVeh){
                         $peoveh = new PeopleVehicle;
-                        $peoveh->people = $people->id;
-                        $peoveh->vehicle =  intval($this->parseLink($objVeh));
+                        $peoveh->pilot = $people->id;
+                        $peoveh->vehicle_id =  intval($this->parseLink($objVeh));
                         $peoveh->save();
                     };
 
