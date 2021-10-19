@@ -74,21 +74,16 @@ class AuthController extends Controller
      *     @OA\RequestBody(
      *         description="Get a Login",
      *         required=true,
-     *    			@OA\Schema(
-     *    				 @OA\Property(property="email",
-     *    					type="string",
-     *    					description="email"
-     *    				),
+     *          @OA\JsonContent(
+     *          required={ "email", "password"},
+     *    			@OA\Property(property="email",
+     *                  type="string",
+     *                  format="email"
      *         ),
-     *     ),
-     *     @OA\RequestBody(
-     *         description="Get a password",
-     *         required=true,
-     *    			@OA\Schema(
-     *    				 @OA\Property(property="password",
-     *    					type="string",
-     *    					description="password"
-     *    				),
+     *          @OA\Property(property="password",
+     *                  type="string",
+     *                  format="password"
+     *         ),
      *      ),
      *     ),
      *     @OA\Response(
@@ -129,13 +124,23 @@ class AuthController extends Controller
      *      @OA\RequestBody(
      *         description="Get a name",
      *         required=true,
-     *    			@OA\Schema(
-     *    				 @OA\Property(property="name",
-     *    					type="string",
-     *    					description="name"
-     *    				),
+     *    			@OA\JsonContent(
+     *          required={"name", "email", "password"},
+     *    			@OA\Property(property="name",
+     *                  type="string",
+     *                  format="name"
      *         ),
-     *     ),
+     *          @OA\Property(property="email",
+     *                  type="string",
+     *                  format="email"
+     *         ),
+     *          @OA\Property(property="password",
+     *                  type="string",
+     *                  format="password"
+     *         ),
+     *      
+     *    ),
+     * ),
      *     @OA\RequestBody(
      *         description="Get a email",
      *         required=true,
