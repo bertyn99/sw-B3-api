@@ -14,7 +14,9 @@
     },
     "servers": [
         {
-            "url": "http://127.0.0.1:8000/api",
+
+            "url": "http://localhost:8000/api",
+
             "description": "Demo API Server"
         }
     ],
@@ -536,6 +538,217 @@
         }
     },
     "components": {
+        "schemas": {
+            "People": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": "true",
+                        "example": "1"
+                    },
+                    "name": {
+                        "description": "people name",
+                        "type": "string"
+                    },
+                    "birth_year": {
+                        "description": "People birth year",
+                        "type": "string"
+                    },
+                    "eye_color": {
+                        "description": "People eye color",
+                        "type": "string"
+                    },
+                    "hair_color": {
+                        "description": "People hair color",
+                        "type": "string"
+                    },
+                    "skin_color": {
+                        "description": "People skin color",
+                        "type": "string"
+                    },
+                    "height": {
+                        "description": "People height",
+                        "type": "string"
+                    },
+                    "mass": {
+                        "description": "People mass",
+                        "type": "string"
+                    },
+                    "gender": {
+                        "description": "People gender",
+                        "type": "string"
+                    },
+                    "hright": {
+                        "description": "People url",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Initial creation timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    },
+                    "updated_at": {
+                        "description": "Last update timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    },
+                    "deleted_at": {
+                        "description": "Soft delete timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "People"
+                }
+            },
+            "Planet": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": "true",
+                        "example": "1"
+                    },
+                    "name": {
+                        "description": "people name",
+                        "type": "string"
+                    },
+                    "diameter": {
+                        "description": "People birth year",
+                        "type": "string"
+                    },
+                    "rotation_period": {
+                        "description": "People eye color",
+                        "type": "string"
+                    },
+                    "orbital_period": {
+                        "description": "People hair color",
+                        "type": "string"
+                    },
+                    "gravity": {
+                        "description": "People skin color",
+                        "type": "string"
+                    },
+                    "population": {
+                        "description": "People height",
+                        "type": "string"
+                    },
+                    "climate": {
+                        "description": "Planet climate",
+                        "type": "string"
+                    },
+                    "terrain": {
+                        "description": "Planet terrain",
+                        "type": "string"
+                    },
+                    "surface_water": {
+                        "description": "Planet terrain",
+                        "type": "string"
+                    },
+                    "url": {
+                        "description": "People url",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Initial creation timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    },
+                    "updated_at": {
+                        "description": "Last update timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    },
+                    "deleted_at": {
+                        "description": "Soft delete timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Planet"
+                }
+            },
+            "Specie": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": "true",
+                        "example": "1"
+                    },
+                    "name": {
+                        "description": "people name",
+                        "type": "string"
+                    },
+                    "classification": {
+                        "description": "People birth year",
+                        "type": "string"
+                    },
+                    "designation": {
+                        "description": "People eye color",
+                        "type": "string"
+                    },
+                    "height_average": {
+                        "description": "People hair color",
+                        "type": "string"
+                    },
+                    "hair_colors": {
+                        "description": "People skin color",
+                        "type": "string"
+                    },
+                    "eye_colors": {
+                        "description": "People height",
+                        "type": "string"
+                    },
+                    "average_life": {
+                        "description": "Planet climate",
+                        "type": "string"
+                    },
+                    "language": {
+                        "description": "Planet terrain",
+                        "type": "string"
+                    },
+                    "skin_colors": {
+                        "description": "Planet terrain",
+                        "type": "string"
+                    },
+                    "url": {
+                        "description": "People url",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Initial creation timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    },
+                    "updated_at": {
+                        "description": "Last update timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    },
+                    "deleted_at": {
+                        "description": "Soft delete timestamp",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Planet"
+                }
+            }
+        },
         "securitySchemes": {
             "apiAuth": {
                 "type": "http",
