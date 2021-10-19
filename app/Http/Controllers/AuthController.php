@@ -23,7 +23,7 @@ class AuthController extends Controller
      */
     /**
    * @OA\Get(
-   *      path="/AuthController",
+   *      path="/auth/AuthController",
    *      operationId="Authentification",
    *      tags={"Authentification"},
 
@@ -66,7 +66,7 @@ class AuthController extends Controller
     /**
      * 
      * @OA\Post(
-     *     path="/login",
+     *     path="/auth/login",
      *     tags={"Authentification"},
      *     operationId="addLogin",
      *     summary="Add a new login",
@@ -116,7 +116,7 @@ class AuthController extends Controller
     }
  /**
      * @OA\Post(
-     *     path="/register",
+     *     path="/auth/register",
      *     tags={"Authentification"},
      *     operationId="addRegister",
      *     summary="Add a new register",

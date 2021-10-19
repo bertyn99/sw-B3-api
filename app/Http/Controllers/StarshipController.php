@@ -10,7 +10,7 @@ class StarshipController extends Controller
 {
   /**
    * @OA\Get(
-   *      path="/starship",
+   *      path="/v1/starship",
    *      operationId="getAllStarship",
    *      tags={"Starship"},
 
@@ -50,7 +50,7 @@ class StarshipController extends Controller
 
        /**
    * @OA\Get(
-   *      path="/starship/{id}",
+   *      path="/v1/starship/{id}",
    *      operationId="getAStarship",
    *      tags={"Starship"},
 

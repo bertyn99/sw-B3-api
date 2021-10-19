@@ -12,7 +12,7 @@ class VehicleController extends Controller
 {
     /**
    * @OA\Get(
-   *      path="/vehicle",
+   *      path="/v1/vehicle",
    *      operationId="getAllVehicle",
    *      tags={"Vehicle"},
    *      summary="Get List Of Vehicle",
@@ -58,7 +58,7 @@ class VehicleController extends Controller
     }
     /**
    * @OA\Get(
-   *      path="/vehicle/{id}",
+   *      path="/v1/vehicle/{id}",
    *      operationId="getAVehicle",
    *      tags={"Vehicle"},
 
