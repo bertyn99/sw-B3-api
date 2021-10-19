@@ -40,6 +40,8 @@ Route::group([
     Route::get('/planet/{id}', ['App\Http\Controllers\PlanetController', 'show']);
     Route::get('/starship', ['App\Http\Controllers\StarshipController', 'index']);
     Route::get('/starship/{id}', ['App\Http\Controllers\StarshipController', 'show']);
+    Route::get('/vehicle', ['App\Http\Controllers\VehicleController', 'index']);
+    Route::get('/vehicle/{id}', ['App\Http\Controllers\VehicleController', 'show']);
 });
 
 Route::any('{any}', function(){
