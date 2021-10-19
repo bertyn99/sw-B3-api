@@ -64,9 +64,10 @@ class ServicesDB
     public function saveToBDD ($tableau, $nomTable)
     {
         switch($nomTable){
-            case 'film': 
+            case 'film':
                 foreach($tableau as $object){
                     $film = new Film;
+                    $film->id = intval($this->parseLink($object->url));
                     $film->title = $object->title;
                     $film->episode_id = $object->episode_id;
                     $film->opening_crawl = $object->opening_crawl;
@@ -74,6 +75,24 @@ class ServicesDB
                     $film->producer = $object->producer;
                     $film->release_date = $object->release_date;
                     $film->url = $this->parseUrl($object->url);
+
+                    // remplissage tables pivot
+                    foreach($object->species as $objSpe){
+                        $people->specie()->attach(intval($this->parseLink($objSpe)));
+                    };
+                    foreach($object->characters as $objPeo){
+                        $people->people()->attach(intval($this->parseLink($objPeo)));
+                    };
+                    foreach($object->planets as $objPla){
+                        $people->planet()->attach(intval($this->parseLink($objPla)));
+                    };
+                    foreach($object->starships as $objSta){
+                        $people->starship()->attach(intval($this->parseLink($objSta)));
+                    };
+                    foreach($object->vehicles as $objVeh){
+                        $people->vehicle()->attach(intval($this->parseLink($objVeh)));
+                    };
+
                     $film->save();
                 }
             break;
@@ -81,6 +100,7 @@ class ServicesDB
                 
                 foreach($tableau as $object){
                     $people = new People;
+                    $people->id = intval($this->parseLink($object->url));
                     $people->name = $object->name;
                     $people->birth_year = $object->birth_year;
                     $people->eye_color = $object->eye_color;
@@ -91,13 +111,28 @@ class ServicesDB
                     $people->skin_color = $object->skin_color;
                     $people->homeworld = $this->parseLink($object->homeworld);
                     $people->url = $this->parseUrl($object->url);
+
+                    // remplissage tables pivot
+                    $hw = Planet::find(intval($this->parseLink($object->homeworld)));
+                    $people->planet()->associate($hw);
                     
+                    foreach($object->species as $objSpe){
+                        $people->species()->attach(intval($this->parseLink($objSpe)));
+                    };
+                    foreach($object->starships as $objSta){
+                        $people->starship()->attach(intval($this->parseLink($objSta)));
+                    };
+                    foreach($object->vehicles as $objVeh){
+                        $people->vehicles()->attach(intval($this->parseLink($objVeh)));
+                    };
+
                     $people->save();
                 }
             break;
             case 'specie': 
                 foreach($tableau as $object){
                     $specie = new Specie;
+                    $specie->id = intval($this->parseLink($object->url));
                     $specie->name = $object->name;
                     $specie->classification = $object->classification;
                     $specie->designation = $object->designation;
@@ -115,6 +150,7 @@ class ServicesDB
             case 'starship': 
                 foreach($tableau as $object){
                     $starship = new Starship;
+                    $starship->id = intval($this->parseLink($object->url));
                     $starship->name = $object->name;
                     $starship->model = $object->model;
                     $starship->manufacturer = $object->manufacturer;
@@ -135,6 +171,7 @@ class ServicesDB
             case 'planet': 
                 foreach($tableau as $object){
                     $planet = new Planet;
+                    $planet->id = intval($this->parseLink($object->url));
                     $planet->name = $object->name;
                     $planet->diameter = $object->diameter;
                     $planet->rotation_period = $object->rotation_period;
@@ -151,6 +188,7 @@ class ServicesDB
             case 'vehicle': 
                 foreach($tableau as $object){
                     $vehicle = new Vehicle;
+                    $vehicle->id = intval($this->parseLink($object->url));
                     $vehicle->name = $object->name;
                     $vehicle->model = $object->model;
                     $vehicle->vehicle_class = $object->vehicle_class;
@@ -166,6 +204,8 @@ class ServicesDB
                     $vehicle->save();
                 }
             break;
+
+
             default: 
                 return;
             break;
@@ -173,13 +213,6 @@ class ServicesDB
     }
     public function init ()
     {
-        $data = $this->getData("/films");
-        $data = $this->parseData($data);
-        $this->saveToBDD($data, 'film');
-
-        $data = $this->getData("/people");
-        $data = $this->parseData($data);
-        $this->saveToBDD($data, 'people');
 
         $data = $this->getData("/planets");
         $data = $this->parseData($data);
@@ -196,6 +229,43 @@ class ServicesDB
         $data = $this->getData("/vehicles");
         $data = $this->parseData($data);
         $this->saveToBDD($data, 'vehicle');
+
+        $data = $this->getData("/people");
+        $data = $this->parseData($data);
+        $this->saveToBDD($data, 'people');
+
+        $data = $this->getData("/films");
+        $data = $this->parseData($data);
+        $this->saveToBDD($data, 'film');
+        /*
+        film => people
+        film => planet
+        film => starship
+        film => vehicle
+        film => specie
+
+        //people => film
+        people => specie
+        people => vehicle
+        people => starship
+        people => planet
+
+        //planet => people
+        //planet => film
+
+        //specie => people
+        //specie => film
+
+        //starship => people
+        //starship => film
+        
+        //vehicle => people
+        //vehicle => film
+
+
+        forcer l'id via l'url
+
+        */
     }
 }
 
