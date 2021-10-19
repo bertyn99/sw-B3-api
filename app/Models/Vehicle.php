@@ -30,14 +30,14 @@ class Vehicle extends Model
     public function people()
     {
 
-        return $this->HasMany(PeopleVehicle::class);
+        return $this->hasMany(PeopleVehicle::class);
 
     }
 
     public function film()
     {
 
-        return $this->HasMany(FilmVehicle::class);
+        return $this->hasMany(FilmVehicle::class);
 
     }
 }
