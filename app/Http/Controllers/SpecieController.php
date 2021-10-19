@@ -59,7 +59,7 @@ class SpecieController extends Controller
 * @OA\Get(
 *      path="/v1/specie/{id}",
 *      operationId="getASpecie",
-*      tags={"Planet"},
+*      tags={"Specie"},
 *        
 *      summary="Get a specie",
 *      description="Returns a specie and associated people,film, planet.",
