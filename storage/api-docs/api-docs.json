@@ -22,7 +22,7 @@
         "/AuthController": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Authentification"
                 ],
                 "summary": "Create New AuthController ",
                 "description": "Create new Authentification ",
@@ -49,82 +49,87 @@
                 }
             }
         },
-        "/AuthController/login/{request}": {
-            "get": {
+        "/login": {
+            "post": {
                 "tags": [
-                    "Tests"
+                    "Authentification"
                 ],
-                "summary": "Get a JWT",
-                "description": "Returns a new Token ",
-                "operationId": "getAToken",
-                "parameters": [
-                    {
-                        "name": "request",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                "summary": "Add a new login",
+                "description": "",
+                "operationId": "addLogin",
+                "requestBody": {
+                    "description": "Get a Login",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
                         }
                     }
-                ],
+                },
                 "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "400": {
-                        "description": "Bad Request"
-                    },
-                    "404": {
-                        "description": "not found"
+                    "405": {
+                        "description": "Invalid input"
                     }
                 }
             }
         },
-        "/AuthController/register/{request}": {
-            "get": {
+        "/register": {
+            "post": {
                 "tags": [
-                    "Tests"
+                    "Authentification"
                 ],
-                "summary": "Register a User",
-                "description": "Returns a new User ",
-                "operationId": "registerAUser",
-                "parameters": [
-                    {
-                        "name": "request",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                "summary": "Add a new register",
+                "description": "",
+                "operationId": "addRegister",
+                "requestBody": {
+                    "description": "Get a name",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "format": "name"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
                         }
                     }
-                ],
+                },
                 "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "400": {
-                        "description": "Bad Request"
-                    },
-                    "404": {
-                        "description": "not found"
+                    "405": {
+                        "description": "Invalid input"
                     }
                 }
             }
@@ -132,7 +137,7 @@
         "/film": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Film"
                 ],
                 "summary": "Get List Of Film",
                 "description": "Returns all film and associated people, vehicle, specie, planet, starship",
@@ -167,7 +172,7 @@
         "/film/{id}": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Film"
                 ],
                 "summary": "Get a film",
                 "description": "Returns a film and associated people, vehicle, specie, planet, starship",
@@ -212,7 +217,7 @@
         "/people": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "People"
                 ],
                 "summary": "Get List Of People",
                 "description": "Returns all people and associated vehicle, specie.",
@@ -247,7 +252,7 @@
         "/people/{id}": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "People"
                 ],
                 "summary": "Get a person",
                 "description": "Returns a person and associated vehicle, specie.",
@@ -292,7 +297,7 @@
         "/planet": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Planet"
                 ],
                 "summary": "Get List Of Planet",
                 "description": "Returns all planet and associated people, film, specie",
@@ -327,7 +332,7 @@
         "/planet/{id}": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Planet"
                 ],
                 "summary": "Get a planet",
                 "description": "Returns a planet and associated people,film, specie.",
@@ -372,7 +377,7 @@
         "/starship": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Starship"
                 ],
                 "summary": "Get List Of Starship",
                 "description": "Returns all starship and associated people, film",
@@ -407,7 +412,7 @@
         "/starship/{id}": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Starship"
                 ],
                 "summary": "Get a starship",
                 "description": "Returns a starship and associated people, film",
@@ -452,7 +457,7 @@
         "/vehicle": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Vehicle"
                 ],
                 "summary": "Get List Of Vehicle",
                 "description": "Returns all vehicle and associated people",
@@ -487,7 +492,7 @@
         "/vehicle/{id}": {
             "get": {
                 "tags": [
-                    "Tests"
+                    "Vehicle"
                 ],
                 "summary": "Get a vehicle",
                 "description": "Returns a vehicle and associated people",
