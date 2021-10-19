@@ -59,6 +59,7 @@ class People extends Model
     }
     public function starship(){
         return $this->belongsTo(PeopleStarship::class);
+
     }
 
 }
