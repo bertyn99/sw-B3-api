@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Api covid19 Documentation",
+        "title": "swapi",
         "description": "Implementation of Swagger with in Laravel",
         "contact": {
             "email": "admin@admin.com"
@@ -14,9 +14,7 @@
     },
     "servers": [
         {
-
-            "url": "http://localhost:8000/api",
-
+            "url": "http://127.0.0.1:8000/api",
             "description": "Demo API Server"
         }
     ],
