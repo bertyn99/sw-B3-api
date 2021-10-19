@@ -37,7 +37,7 @@ class ServicesDB
         $env = env('APP_URL');
         $urlExploded = explode("/", $url);
 
-        $urlReturn = $env.'/'.$urlExploded[count($urlExploded)-3].'/'.$urlExploded[count($urlExploded)-2].'/';
+        $urlReturn = $env.'/api/v1/'.$urlExploded[count($urlExploded)-3].'/'.$urlExploded[count($urlExploded)-2].'/';
         return $urlReturn;
     }
 
@@ -78,19 +78,19 @@ class ServicesDB
 
                     // remplissage tables pivot
                     foreach($object->species as $objSpe){
-                        $people->specie()->attach(intval($this->parseLink($objSpe)));
+                        $film->specie()->attach(intval($this->parseLink($objSpe)));
                     };
                     foreach($object->characters as $objPeo){
-                        $people->people()->attach(intval($this->parseLink($objPeo)));
+                        $film->people()->attach(intval($this->parseLink($objPeo)));
                     };
                     foreach($object->planets as $objPla){
-                        $people->planet()->attach(intval($this->parseLink($objPla)));
+                        $film->planet()->attach(intval($this->parseLink($objPla)));
                     };
                     foreach($object->starships as $objSta){
-                        $people->starship()->attach(intval($this->parseLink($objSta)));
+                        $film->starship()->attach(intval($this->parseLink($objSta)));
                     };
                     foreach($object->vehicles as $objVeh){
-                        $people->vehicle()->attach(intval($this->parseLink($objVeh)));
+                        $film->vehicle()->attach(intval($this->parseLink($objVeh)));
                     };
 
                     $film->save();
@@ -113,8 +113,10 @@ class ServicesDB
                     $people->url = $this->parseUrl($object->url);
 
                     // remplissage tables pivot
-                    $hw = Planet::find(intval($this->parseLink($object->homeworld)));
-                    $people->planet()->associate($hw);
+                    if(!is_null($object->homeworld)){
+                        $hw = Planet::find(intval($this->parseLink($object->homeworld)));
+                        $people->planet()->associate($hw);
+                    };
                     
                     foreach($object->species as $objSpe){
                         $people->species()->attach(intval($this->parseLink($objSpe)));
@@ -237,35 +239,7 @@ class ServicesDB
         $data = $this->getData("/films");
         $data = $this->parseData($data);
         $this->saveToBDD($data, 'film');
-        /*
-        film => people
-        film => planet
-        film => starship
-        film => vehicle
-        film => specie
-
-        //people => film
-        people => specie
-        people => vehicle
-        people => starship
-        people => planet
-
-        //planet => people
-        //planet => film
-
-        //specie => people
-        //specie => film
-
-        //starship => people
-        //starship => film
-        
-        //vehicle => people
-        //vehicle => film
-
-
-        forcer l'id via l'url
-
-        */
+     
     }
 }
 
