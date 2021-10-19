@@ -61,7 +61,6 @@ class VehicleController extends Controller
    *      path="/v1/vehicle/{id}",
    *      operationId="getAVehicle",
    *      tags={"Vehicle"},
-
    *      summary="Get a vehicle",
    *      description="Returns a vehicle and associated people",
    *      @OA\Parameter(
