@@ -28,7 +28,7 @@ Route::group([
 
 
 Route::group([
-    'middleware' => 'auth:api',
+    'middleware' => 'jwt.verify',
     'prefix' => 'v1'
 
 ], function ($router) {
@@ -39,3 +39,9 @@ Route::group([
     Route::get('/planet', ['App\Http\Controllers\PlanetController', 'index']);
     Route::get('/planet/{id}', ['App\Http\Controllers\PlanetController', 'show']);
 });
+
+Route::any('{any}', function(){
+    return response()->json([
+    	'status' => 'error',
+        'message' => 'Resource not found'], 404);
+})->where('any', '.*');
