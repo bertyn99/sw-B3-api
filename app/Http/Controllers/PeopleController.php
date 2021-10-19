@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\People;
+use App\Models\PeopleFilm;
 
+use App\Models\PeopleSpecie;
+use App\Models\PeopleStarship;
+use App\Models\PeopleVehicle;
 
 class PeopleController extends Controller
 {
@@ -46,8 +50,43 @@ class PeopleController extends Controller
   public function index()
   {
     //liste de tous les élements
-    $person = People::with(['vehicles','species.specie', 'homeworld'])->get();
-    return response()->json($person);
+    $peoples = People::all();
+
+		foreach ($peoples as $people) {
+	
+			// Films
+			$films = PeopleFilm::where('people_id', $people->id)->get();
+			$filmsArray = [];
+			foreach ($films as $film) {
+				$filmsArray[] = $film->film->url;
+			}
+			$people['films'] = $filmsArray;
+
+			// Species
+			$species = PeopleSpecie::where('people_id', $people->id)->get();
+			$speciesArray = [];
+			foreach ($species as $specie) {
+				$speciesArray[] =$specie->specie->url;
+			}
+			$people['species'] = $speciesArray;
+
+			// Vehicles
+			$vehicles = PeopleVehicle::where('pilot', $people->id)->get();
+			$vehiclesArray = [];
+			foreach ($vehicles as $vehicle) {
+				$vehiclesArray[] =$vehicle->vehicle->url;
+			}
+			$people['vehicles'] = $vehiclesArray;
+
+			// Starships
+			$starships = PeopleStarship::where('people_id', $people->id)->get();
+			$starshipsArray = [];
+			foreach ($starships as $starship) {
+				$starshipsArray[] = $starship->starship->url;
+			}
+			$people['starships'] = $starshipsArray;
+		}
+    return response()->json($peoples);
   }
 
   public function store(Request $request)
@@ -99,9 +138,42 @@ class PeopleController extends Controller
    */
   public function show($id)
   {
-    $person = People::with(['vehicles:url', 'species', 'homeworld'])->find($id);
-    //
-    return response()->json($person);
+    $people = People::with('homeworld')->where('id',$id)->get();
+
+		
+		// Films
+		$films = PeopleFilm::where('people_id', $id)->get();
+		$filmsArray = [];
+		foreach ($films as $film) {
+			$filmsArray[] = $film->film->url;
+		}
+		$people['films'] = $filmsArray;
+
+		// Species
+		$species = PeopleSpecie::where('people_id', $id)->get();
+		$speciesArray = [];
+		foreach ($species as $specie) {
+			$speciesArray[] = $specie->specie->url;
+		}
+		$people['species'] = $speciesArray;
+
+		// Vehicles
+		$vehicles = PeopleVehicle::where('pilot', $id)->get();
+		$vehiclesArray = [];
+		foreach ($vehicles as $vehicle) {
+			$vehiclesArray[] = $vehicle->vehicle->url;
+		}
+		$people['vehicles'] = $vehiclesArray;
+
+		// Starships
+		$starships = PeopleStarship::where('people_id', $id)->get();
+		$starshipsArray = [];
+		foreach ($starships as $starship) {
+			$starshipsArray[] =$starship->starship->url;
+		}
+		$people['starships'] = $starshipsArray;
+
+		return response()->json($people);
   }
 
   public function edit($id)
