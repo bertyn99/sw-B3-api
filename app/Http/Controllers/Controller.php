@@ -12,7 +12,7 @@ class Controller extends BaseController
       /**
  * @OA\Info(
  *      version="1.0.0",
- *      title="Api covid19 Documentation",
+ *      title="swapi",
  *      description="Implementation of Swagger with in Laravel",
  *      @OA\Contact(
  *          email="admin@admin.com"
