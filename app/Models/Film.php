@@ -37,7 +37,7 @@ class Film extends Model
     }
 
     public function peopleUrl(){
-        return $this->hasMany(FilmPeople::class)->select('url');
+        return $this->hasMany(PeopleFilm::class)->select('url');
     }
 
     public function vehicle()
