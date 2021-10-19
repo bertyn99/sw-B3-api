@@ -11,10 +11,10 @@ class PeopleStarship extends Model
 
     protected $table= 'people_starships';
     public function people(){
-        return $this->belongsTo(People::Class);
+        return $this->belongsTo(People::Class,'people_id');
     }
     public function starship()
     {
-        return $this->belongsTo(Starship::class);
+        return $this->belongsTo(Starship::class,'starship_id');
     }
 }
