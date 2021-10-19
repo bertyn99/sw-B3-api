@@ -123,14 +123,14 @@ class ServicesDB
                     // remplissage tables pivot
                     if(!is_null($object->homeworld)){
                         $hw = Planet::find(intval($this->parseLink($object->homeworld)));
-                        $people->planet()->associate($hw);
+                        $people->homeworld()->associate($hw);
                     };
                     
                     foreach($object->species as $objSpe){
                         $people->species()->attach(intval($this->parseLink($objSpe)));
                     };
                     foreach($object->starships as $objSta){
-                        $people->starship()->attach(intval($this->parseLink($objSta)));
+                        $people->starships()->attach(intval($this->parseLink($objSta)));
                     };
                     foreach($object->vehicles as $objVeh){
                         $people->vehicles()->attach(intval($this->parseLink($objVeh)));

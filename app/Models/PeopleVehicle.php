@@ -8,13 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PeopleVehicle extends Model
 {
     use HasFactory;
-    protected $table = 'PeopleVehicle';
-    protected  = [
-        'id',
-        'pilot',
-        'vehicle',
-        'people', 
-    ];
+    protected $table = 'peoples_vehicles';
 
     public function vehicle()
     {
@@ -22,7 +16,7 @@ class PeopleVehicle extends Model
     }
     public function people()
     {
-        return $this->belongsTo(People::class);
+        return $this->belongsTo(People::class,'pilot');
     }
 
 }

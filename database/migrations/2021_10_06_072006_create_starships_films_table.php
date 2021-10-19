@@ -13,13 +13,14 @@ class CreateStarshipsFilmsTable extends Migration
      */
     public function up()
     {
-        Schema::create('starships_films', function (Blueprint $table) {
+        Schema::create('starship_films', function (Blueprint $table) {
 
+            $table->id();
+            $table->unsignedBigInteger('starship_id');
+            $table->foreign('starship_id')->references('id')->on('starships');
+            $table->unsignedBigInteger('film_id');
+            $table->foreign('film_id')->references('id')->on('films');
             $table->timestamps();
-
-            $table->foreignId('starship')->constrained('starships')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('film')->constrained('films')->onUpdate('cascade')->onDelete('cascade');
-
         });
     }
 

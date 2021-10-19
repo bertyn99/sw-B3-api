@@ -15,10 +15,10 @@ class CreatePeopleFilmsTable extends Migration
     {
         Schema::create('people_films', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('people');
-            $table->foreign('people')->references('id')->on('peoples');
-            $table->unsignedBigInteger('film');
-            $table->foreign('film')->references('id')->on('films');
+            $table->unsignedBigInteger('people_id');
+            $table->foreign('people_id')->references('id')->on('peoples');
+            $table->unsignedBigInteger('film_id');
+            $table->foreign('film_id')->references('id')->on('films');
             $table->timestamps();
         });
     }

@@ -17,8 +17,8 @@ class CreatePeoplesVehiclesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('pilot');
             $table->foreign('pilot')->references('id')->on('peoples');
-            $table->unsignedBigInteger('vehicle');
-            $table->foreign('vehicle')->references('id')->on('vehicles');
+            $table->unsignedBigInteger('vehicle_id');
+            $table->foreign('vehicle_id')->references('id')->on('vehicles');
             $table->timestamps();
         });
     }

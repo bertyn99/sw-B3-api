@@ -46,7 +46,7 @@ class PeopleController extends Controller
   public function index()
   {
     //liste de tous les élements
-    $person = People::with(['vehicles:url', 'species', 'homeworld'])->get();
+    $person = People::with(['vehicles', 'species', 'homeworld'])->get();
     return response()->json($person);
   }
 
