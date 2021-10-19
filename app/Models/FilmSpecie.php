@@ -10,7 +10,7 @@ class FilmSpecie extends Model
     use HasFactory;
    
 
-    protected $table = "film_species";
+    protected $table = "species_films";
     public function film() {
         return $this->belongsTo(FIlm::class);
     }
