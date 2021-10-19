@@ -10,7 +10,7 @@ class PeopleController extends Controller
 {
   /**
    * @OA\Get(
-   *      path="/people",
+   *      path="/v1/people",
    *      operationId="getAllPeople",
    *      tags={"People"},
 
@@ -20,7 +20,6 @@ class PeopleController extends Controller
    *      @OA\Response(
    *          response=200,
    *          description="Successful operation",
-   *          
    *          @OA\MediaType(
    *           mediaType="application/json",
    *      )
@@ -58,7 +57,7 @@ class PeopleController extends Controller
 
   /**
    * @OA\Get(
-   *      path="/people/{id}",
+   *      path="/v1/people/{id}",
    *      operationId="getAPerson",
    *      tags={"People"},
 
