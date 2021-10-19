@@ -231,11 +231,11 @@ class ServicesDB
                         ['/people', 'people'],
                         ['/films', 'film']];
 
-        for($ii=0; $ii>5; $ii++){
+        for($ii=0; $ii<=5; $ii++){
             $page = 1;
             while(!is_null($page)){
                 $data = $this->getData($listeTable[$ii][0].'/?page='.$page);
-                $page = (is_null(checkNext($data)))?null:$page++;
+                $page = (is_null($this->checkNext($data)))?null:$page+1;
                 $data = $this->parseData($data);
                 $this->saveToBDD($data, $listeTable[$ii][1]);
             }
