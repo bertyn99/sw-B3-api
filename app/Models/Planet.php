@@ -53,8 +53,7 @@ class Planet extends Model
     ];
     public function residents()
     {
-
-        return $this->hasMany(People::class);
+        return $this->hasMany(People::class,'homeworld');
 
     }
 
@@ -65,6 +64,6 @@ class Planet extends Model
 
     public function species()
     {
-        return $this->hasMany(Specie::class);
+        return $this->hasMany(Specie::class,'homeworld');
     }
 }
