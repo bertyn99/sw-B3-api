@@ -23,23 +23,20 @@ class People extends Model
         'url'
     ];
 
-    public function homeworld(){
-        return $this->belongsTo(Planet::class, 'homeworld');
-    }
     public function vehicles(){
-        return $this->belongsToMany(Vehicle::class, 'peoples_vehicles','pilot','vehicle');
+        return $this->hasMany(PeopleVehicle::class);
     }
     public function film(){
-        return $this->belongsToMany(Film::class, 'people_films','film','character');
+        return $this->hasMany(PeopleFilm::class);
     }
     public function species(){
-        return $this->belongsToMany(Specie::class, 'people_species','specie','people');
+        return $this->hasMany(PeopleSpecie::class);
     }
     public function planet(){
-        return $this->belongsTo(Planet::class, 'homeworld');
+        return $this->belongsTo(PeoplePlanet::class);
     }
     public function starship(){
-        return $this->belongsToMany(Starship::class, 'people_starships','starship','people');
+        return $this->hasMany(FilmStarship::class);
     }
 
 }
