@@ -113,5 +113,5 @@ class PlanetController extends Controller
            public function destroy($id) {
               echo 'destroy';
            }
-        }
+        
 }
