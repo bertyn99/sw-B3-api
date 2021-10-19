@@ -54,7 +54,7 @@ class Planet extends Model
     public function residents()
     {
 
-        return $this->hasMany(PeoplePlanet::class);
+        return $this->hasMany(People::class);
 
     }
 
