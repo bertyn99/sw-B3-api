@@ -4,12 +4,7 @@ namespace App\Services ;
 
 use GuzzleHttp\Client ; 
 use Illuminate\Support\Facades\Http;
-use App\Models\Film;
-use App\Models\People;
-use App\Models\Planet;
-use App\Models\Specie;
-use App\Models\Starship;
-use App\Models\Vehicle;
+use App\Models;
 
 class ServicesDB 
 {
