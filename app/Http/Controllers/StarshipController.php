@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Starship;
+use App\Models\FilmStarship;
+
+use App\Models\PeopleStarship;
 
 
 class StarshipController extends Controller
@@ -44,7 +47,26 @@ class StarshipController extends Controller
    */
     public function index() {
         //liste de tous les élements
-         return response()->json(Starship::all());
+        $starships = Starship::all();
+        foreach ($starships as $starship) {
+    
+          // Peoples
+          $peoples = PeopleStarship::where('starship_id',  $starship->id)->get();
+          $peopleArray = [];
+          foreach ($peoples as $people) {
+            $peopleArray[] = $people->people->url;
+          }
+          $starship['pilots'] = $peopleArray;
+    
+          // Films
+          $films = FilmStarship::where('starship_id',  $starship->id)->get();
+          $filmArray = [];
+          foreach ($films as $film) {
+            $filmArray[] =$film->film->url;
+          }
+          $starship['films'] = $filmArray;
+        }
+        return response()->json($starships);
        }
 
        /**
@@ -89,10 +111,26 @@ class StarshipController extends Controller
    *  )
    */
     public function show($id) {
-          $starship = Starship::find($id);
-          dd($starship->filmURL);
-          dd($starship->peopleUrl);
-          return response()->json($starship,200);
+      $starship = Starship::find($id);
+
+  
+      // Peoples
+      $peoples = PeopleStarship::where('starship_id', $id)->get();
+      $peopleArray = [];
+      foreach ($peoples as $people) {
+        $peopleArray[] = $people->people->url;
+      }
+      $starship['pilots'] = $peopleArray;
+  
+      // Films
+      $films = FilmStarship::where('starship_id', $id)->get();
+      $filmArray = [];
+      foreach ($films as $film) {
+        $filmArray[] = $film->film->url;
+      }
+      $starship['films'] = $filmArray;
+  
+      return $starship;
        }
     public function store(Request $request)
        {

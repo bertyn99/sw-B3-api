@@ -32,7 +32,7 @@ class Starship extends Model
 
     public function film()
     {
-        return $this->hasMany(Starship::class, 'starships_films', 'film', 'starship');
+        return $this->hasMany(Starship::class, 'film_id');
         //(class pointe, table pointe, colonne pointe, colonne depart)
     }
 
@@ -42,7 +42,7 @@ class Starship extends Model
 
     public function people()
     {
-        return $this->hasMany(People::class, 'people_starships', 'people', 'starship');
+        return $this->hasMany(People::class, 'people_id', 'starship');
     }
 
     public function peopleUrl(){

@@ -48,9 +48,22 @@ class PlanetController extends Controller
    public function index()
    {
       //liste de tous les élements
-      $planet = Planet::with(['residents:url', 'films:url', 'species:url'])->get();
+      $planets = Planet::with('residents','species')->get();
 
-      return response()->json($planet);
+		foreach ($planets as $planet) {
+			$planet_id = $planet->id;
+			
+
+			// Films
+			$films = FilmPlanet::where('planet_id', $planet_id)->get();
+			$filmsArray = [];
+			foreach ($films as $film) {
+				$filmsArray[] = $film->film->url;
+			}
+			$planet['films'] = $filmsArray;
+		}
+		return response()->json($planets);
+   
       //return response()->json(Planet::all());
    }
 
@@ -102,7 +115,7 @@ class PlanetController extends Controller
     */
    public function show($id)
    {
-      $planet = Planet::with('residents')->where('id', $id)->get();;
+      $planet = Planet::with('residents','species')->where('id', $id)->get();;
 
 
       // Films

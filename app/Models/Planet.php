@@ -64,6 +64,6 @@ class Planet extends Model
 
     public function species()
     {
-        return $this->hasMany(Specie::class);
+        return $this->hasMany(Specie::class,'homeworld');
     }
 }
