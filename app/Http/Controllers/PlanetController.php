@@ -60,9 +60,10 @@ class PlanetController extends Controller
    *      path="/v1/planet/{id}",
    *      operationId="getAPlanet",
    *      tags={"Planet"},
-
+   *        
    *      summary="Get a planet",
    *      description="Returns a planet and associated people,film, specie.",
+   *      security={{"apiAuth":{}}},
    *      @OA\Parameter(
    *        name="planet",
    *        in="path",
@@ -71,7 +72,6 @@ class PlanetController extends Controller
    *           type="string"
    *           )
    *        ),
-   *        security={{"apiAuth":{}}},
    * @OA\Response(
    *          response=200,
    *          description="Successful operation",
