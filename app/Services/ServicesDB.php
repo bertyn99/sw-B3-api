@@ -115,7 +115,7 @@ class ServicesDB
                     // remplissage tables pivot
                     $hw = Planet::find(intval($this->parseLink($object->homeworld)));
                     $people->planet()->associate($hw);
-                    
+
                     foreach($object->species as $objSpe){
                         $people->species()->attach(intval($this->parseLink($objSpe)));
                     };
@@ -213,6 +213,12 @@ class ServicesDB
     }
     public function init ()
     {
+        $listeTable = [ ['/planets', 'planet'],
+                        ['/species', 'specie'],
+                        ['/starships', 'starship'],
+                        ['/vehicles', 'vehicle'],
+                        ['/people', 'people'],
+                        ['/films', 'film']];
 
         $data = $this->getData("/planets");
         $data = $this->parseData($data);
