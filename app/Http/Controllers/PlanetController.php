@@ -55,7 +55,7 @@ class PlanetController extends Controller
            public function store(Request $request) {
              echo 'store';
             }
-            /**
+ /**
    * @OA\Get(
    *      path="/v1/planet/{id}",
    *      operationId="getAPlanet",
