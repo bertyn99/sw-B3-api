@@ -49,7 +49,7 @@ class VehicleController extends Controller
         $vehicle = Vehicle::with(['peoples:url'])->get() ; 
 
        //return response()->json(Vehicle::all());
-       return response()->json($vehicle)
+       return response()->json($vehicle);
     }
 
     public function store(Request $request)
