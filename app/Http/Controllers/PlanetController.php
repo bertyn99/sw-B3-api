@@ -53,7 +53,6 @@ class PlanetController extends Controller
 		foreach ($planets as $planet) {
 			$planet_id = $planet->id;
 			
-
 			// Films
 			$films = FilmPlanet::where('planet_id', $planet_id)->get();
 			$filmsArray = [];
@@ -66,6 +65,7 @@ class PlanetController extends Controller
    
       //return response()->json(Planet::all());
    }
+
 
    public function store(Request $request)
    {
@@ -117,7 +117,6 @@ class PlanetController extends Controller
    {
       $planet = Planet::with('residents','species')->where('id', $id)->get();;
 
-
       // Films
       $films = FilmPlanet::where('planet_id', $id)->get();
       $filmsArray = [];
@@ -140,4 +139,5 @@ class PlanetController extends Controller
    {
       echo 'destroy';
    }
+
 }
