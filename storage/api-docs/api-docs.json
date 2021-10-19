@@ -259,7 +259,7 @@
                 "operationId": "getAPerson",
                 "parameters": [
                     {
-                        "name": "country",
+                        "name": "people",
                         "in": "path",
                         "required": true,
                         "schema": {
