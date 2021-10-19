@@ -92,7 +92,8 @@ class ServicesDB
                     $film->producer = $object->producer;
                     $film->release_date = $object->release_date;
                     $film->url = $this->parseUrl($object->url);
-
+                    $film->save();
+                    
                     // remplissage tables pivot
                     foreach($object->species as $objSpe){
                         $filspe = new FilmSpecie;
@@ -126,7 +127,6 @@ class ServicesDB
                         $filveh->save();
                     };
 
-                    $film->save();
                 }
             break;
             case 'people': 
@@ -144,7 +144,7 @@ class ServicesDB
                     $people->skin_color = $object->skin_color;
                     $people->homeworld = $this->parseLink($object->homeworld);
                     $people->url = $this->parseUrl($object->url);
-
+                    $people->save();
                     // remplissage tables pivot
                     if(!is_null($object->homeworld)){
                         $hw = Planet::find(intval($this->parseLink($object->homeworld)));
@@ -170,7 +170,6 @@ class ServicesDB
                         $peoveh->save();
                     };
 
-                    $people->save();
                 }
             break;
             case 'specie': 
