@@ -9,7 +9,7 @@ class FilmStarship extends Model
 {
     use HasFactory;
 
-    protected $table= 'starships_films';
+    protected $table= 'starship_films';
     public function starship()
     {
         return $this->belongsTo(Starship::class,'starship_id');

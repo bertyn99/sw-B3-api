@@ -93,7 +93,7 @@ class ServicesDB
                     $film->release_date = $object->release_date;
                     $film->url = $this->parseUrl($object->url);
                     $film->save();
-                    
+
                     // remplissage tables pivot
                     foreach($object->species as $objSpe){
                         $filspe = new FilmSpecie;
@@ -120,7 +120,6 @@ class ServicesDB
                         $filsta->save();
                     };
                     foreach($object->vehicles as $objVeh){
-                        $film->vehicle()->attach(intval($this->parseLink($objVeh)));
                         $filveh = new FilmVehicle;
                         $filveh->film_id = $film->id;
                         $filveh->vehicle_id =  intval($this->parseLink($objVeh));
