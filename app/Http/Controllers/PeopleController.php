@@ -16,14 +16,16 @@ class PeopleController extends Controller
 
    *      summary="Get List Of People",
    *      description="Returns all people and associated vehicle, specie.",
+   *      security={{"apiAuth":{}}},
    *      @OA\Response(
    *          response=200,
    *          description="Successful operation",
+   *          
    *          @OA\MediaType(
    *           mediaType="application/json",
    *      )
    *      ),
-   *      security={{"apiAuth":{}}},
+   * 
    *      @OA\Response(
    *          response=401,
    *          description="Unauthenticated",
@@ -63,7 +65,7 @@ class PeopleController extends Controller
    *      summary="Get a person",
    *      description="Returns a person and associated vehicle, specie.",
    *      @OA\Parameter(
-   *        name="country",
+   *        name="people",
    *        in="path",
    *        required=true,
    *        @OA\Schema(
