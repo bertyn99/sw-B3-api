@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class FilmPlanet extends Model
 {
     use HasFactory;
+    protected $table = 'planets_films';
 
     protected $fillable = [
         'id',
