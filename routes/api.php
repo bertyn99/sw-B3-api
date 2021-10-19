@@ -38,6 +38,8 @@ Route::group([
     Route::get('/film/{id}', ['App\Http\Controllers\FilmController', 'show']);
     Route::get('/planet', ['App\Http\Controllers\PlanetController', 'index']);
     Route::get('/planet/{id}', ['App\Http\Controllers\PlanetController', 'show']);
+    Route::get('/starship', ['App\Http\Controllers\StarshipController', 'index']);
+    Route::get('/starship/{id}', ['App\Http\Controllers\StarshipController', 'show']);
 });
 
 Route::any('{any}', function(){
