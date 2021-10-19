@@ -12,7 +12,7 @@ class FilmSpecie extends Model
 
     protected $table = "species_films";
     public function film() {
-        return $this->belongsTo(FIlm::class);
+        return $this->belongsTo(Film::class);
     }
 
     public function specie() {
