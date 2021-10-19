@@ -9,7 +9,7 @@ class FilmController extends Controller
 {
    /**
    * @OA\Get(
-   *      path="/film",
+   *      path="/v1/film",
    *      operationId="getAllFilm",
    *      tags={"Film"},
 
@@ -48,7 +48,7 @@ class FilmController extends Controller
 
     /**
    * @OA\Get(
-   *      path="/film/{id}",
+   *      path="/v1/film/{id}",
    *      operationId="getAFilm",
    *      tags={"Film"},
 

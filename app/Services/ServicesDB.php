@@ -22,6 +22,13 @@ class ServicesDB
         $this->http = new Client() ;
         
     }
+
+    public function checkNext ($data)
+    {
+        $parsedData = json_decode($data);
+        return $parsedData->next;
+    }
+
     public function parseLink ($link)
     {
         if(!is_null($link)){
@@ -33,6 +40,7 @@ class ServicesDB
         }
          
     }
+
     public function parseUrl ($url){
         $env = env('APP_URL');
         $urlExploded = explode("/", $url);
@@ -213,34 +221,27 @@ class ServicesDB
             break;
         }
     }
+
     public function init ()
     {
+        $listeTable = [ ['/planets', 'planet'],
+                        ['/species', 'specie'],
+                        ['/starships', 'starship'],
+                        ['/vehicles', 'vehicle'],
+                        ['/people', 'people'],
+                        ['/films', 'film']];
 
-        $data = $this->getData("/planets");
-        $data = $this->parseData($data);
-        $this->saveToBDD($data, 'planet');
-
-        $data = $this->getData("/species");
-        $data = $this->parseData($data);
-        $this->saveToBDD($data, 'specie');
-
-        $data = $this->getData("/starships");
-        $data = $this->parseData($data);
-        $this->saveToBDD($data, 'starship');
-
-        $data = $this->getData("/vehicles");
-        $data = $this->parseData($data);
-        $this->saveToBDD($data, 'vehicle');
-
-        $data = $this->getData("/people");
-        $data = $this->parseData($data);
-        $this->saveToBDD($data, 'people');
-
-        $data = $this->getData("/films");
-        $data = $this->parseData($data);
-        $this->saveToBDD($data, 'film');
+        for($ii=0; $ii<=5; $ii++){
+            $page = 1;
+            while(!is_null($page)){
+                $data = $this->getData($listeTable[$ii][0].'/?page='.$page);
+                $page = (is_null($this->checkNext($data)))?null:$page+1;
+                $data = $this->parseData($data);
+                $this->saveToBDD($data, $listeTable[$ii][1]);
+            }
+        }
      
-    }
+    }   
 }
 
 

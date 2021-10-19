@@ -14,12 +14,14 @@
     },
     "servers": [
         {
+
             "url": "http://localhost:8000/api",
+
             "description": "Demo API Server"
         }
     ],
     "paths": {
-        "/AuthController": {
+        "/auth/AuthController": {
             "get": {
                 "tags": [
                     "Authentification"
@@ -49,7 +51,7 @@
                 }
             }
         },
-        "/login": {
+        "/auth/login": {
             "post": {
                 "tags": [
                     "Authentification"
@@ -89,7 +91,7 @@
                 }
             }
         },
-        "/register": {
+        "/auth/register": {
             "post": {
                 "tags": [
                     "Authentification"
@@ -134,7 +136,7 @@
                 }
             }
         },
-        "/film": {
+        "/v1/film": {
             "get": {
                 "tags": [
                     "Film"
@@ -169,7 +171,7 @@
                 ]
             }
         },
-        "/film/{id}": {
+        "/v1/film/{id}": {
             "get": {
                 "tags": [
                     "Film"
@@ -214,7 +216,7 @@
                 ]
             }
         },
-        "/people": {
+        "/v1/people": {
             "get": {
                 "tags": [
                     "People"
@@ -249,7 +251,7 @@
                 ]
             }
         },
-        "/people/{id}": {
+        "/v1/people/{id}": {
             "get": {
                 "tags": [
                     "People"
@@ -294,7 +296,7 @@
                 ]
             }
         },
-        "/planet": {
+        "/v1/planet": {
             "get": {
                 "tags": [
                     "Planet"
@@ -329,7 +331,7 @@
                 ]
             }
         },
-        "/planet/{id}": {
+        "/v1/planet/{id}": {
             "get": {
                 "tags": [
                     "Planet"
@@ -374,7 +376,7 @@
                 ]
             }
         },
-        "/starship": {
+        "/v1/starship": {
             "get": {
                 "tags": [
                     "Starship"
@@ -409,7 +411,7 @@
                 ]
             }
         },
-        "/starship/{id}": {
+        "/v1/starship/{id}": {
             "get": {
                 "tags": [
                     "Starship"
@@ -454,7 +456,7 @@
                 ]
             }
         },
-        "/vehicle": {
+        "/v1/vehicle": {
             "get": {
                 "tags": [
                     "Vehicle"
@@ -489,7 +491,7 @@
                 ]
             }
         },
-        "/vehicle/{id}": {
+        "/v1/vehicle/{id}": {
             "get": {
                 "tags": [
                     "Vehicle"

@@ -27,10 +27,18 @@ class Vehicle extends Model
 
 
     ];
-    public function peoples()
+    public function people()
     {
 
-        return $this->belongsToMany(Peoples::class, 'peoples_vehicles', 'pilot', 'vehicle');
+        return $this->hasMany(PeopleVehicle::class);
 
     }
+
+    public function film()
+    {
+
+        return $this->hasMany(FilmVehicle::class);
+
+    }
+}
 }
