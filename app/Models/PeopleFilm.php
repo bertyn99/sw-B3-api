@@ -10,9 +10,9 @@ class PeopleFilm extends Model
     use HasFactory;
     protected $table= 'people_films';
     public function people(){
-        return $this->belongsTo(People::Class);
+        return $this->belongsTo(People::Class,'people_id');
     }
     public function film(){
-        return $this->belongsTo(Film::class);
+        return $this->belongsTo(Film::class,'film_id');
     }
 }
