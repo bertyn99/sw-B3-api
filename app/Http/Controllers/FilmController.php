@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Film;
+use App\Models\FilmSpecie;
+use App\Models\FilmStarship;
+use App\Models\FilmVehicle;
+use App\Models\PeopleFilm;
+use App\Models\FilmPlanet;
 
 class FilmController extends Controller
 {
@@ -43,7 +48,51 @@ class FilmController extends Controller
    */
     public function index() {
     //liste de tous les élements
-     return response()->json(Film::all());
+    $films = Film::all();
+    foreach ($films as $film) {
+       $film_id = $film->id;
+       // Peoples
+       $peoples = PeopleFilm::with('film')->where('film_id', $film_id)->get();
+       $peopleArray = [];
+       foreach ($peoples as $people) {
+          $peopleArray[] = $people->film->url;
+       }
+       $film['characters'] = $peopleArray;
+
+       // Planets
+       $planets = FilmPlanet::with('planet')->where('film_id', $film->id)->get();
+       $planetsArray = [];
+       foreach ($planets as $planet) {
+          $planetsArray[] = $planet->planet->url;
+       }
+       $film['planets'] = $planetsArray;
+
+       // Starships
+       $starships = FilmStarship::with('starship')->where('film_id', $film->id)->get();
+       $starshipsArray = [];
+       foreach ($starships as $starship) {
+          $starshipsArray[] =$starship->starship->url;
+       }
+       $film['starships'] = $starshipsArray;
+
+       // Vehicles
+       $vehicles = FilmVehicle::with('vehicle')->where('film_id', $film->id)->get();
+       $vehiclesArray = [];
+       foreach ($vehicles as $vehicle) {
+          $vehiclesArray[] =$vehicle->vehicle->url;
+       }
+       $film['vehicles'] = $vehiclesArray;
+
+       //Species
+       $species = FilmSpecie::with('specie')->where('film_id', $film->id)->get();
+       $speciesArray = [];
+       foreach ($species as $specie) {
+          $speciesArray[] =$specie->specie->url;
+       }
+       $film['species'] = $speciesArray;
+    }
+
+    return response()->json($films);
    }
 
     /**
@@ -89,17 +138,51 @@ class FilmController extends Controller
    *  )
    */
    public function show($id) {
-      $film = Film::find($id);
-      dd($film->starshipURL);
-      dd($film->peopleURL);
-      dd($film->vehicleURL);
-      dd($film->specieURL);
-      dd($film->planetURL);
-      return response()->json($film,200);
+      
+		$film = Film::find($id);
+
+		// Peoples
+		$peoples = PeopleFilm::with('people')->where('film_id', $id)->get();
+		$peopleArray = [];
+		foreach ($peoples as $people) {
+			$peopleArray[] = $people->people->url;
+		}
+		$film['characters'] = $peopleArray;
+
+		// Planets
+		$planets = FilmPlanet::where('film_id', $film->id)->get();
+		$planetsArray = [];
+		foreach ($planets as $planet) {
+			$planetsArray[] = $planet->planet->url;
+		}
+		$film['planets'] = $planetsArray;
+
+		// Starships
+		$starships = FilmStarship::where('film_id', $film->id)->get();
+		$starshipsArray = [];
+		foreach ($starships as $starship) {
+			$starshipsArray[] =$starship->starship->url;
+		}
+		$film['starships'] = $starshipsArray;
+
+		// Vehicles
+		$vehicles = FilmVehicle::where('film_id', $film->id)->get();
+		$vehiclesArray = [];
+		foreach ($vehicles as $vehicle) {
+			$vehiclesArray[] = $vehicle->vehicle->url;
+		}
+		$film['vehicles'] = $vehiclesArray;
+
+		// Species
+		$species = FilmSpecie::where('film_id', $film->id)->get();
+		$speciesArray = [];
+		foreach ($species as $specie) {
+			$speciesArray[] = $specie->specie->url;
+		}
+		$film['species'] = $speciesArray;
+
+		return response()->json($film);
    }
-   public function store(Request $request) 
-   {
-      echo 'store';
-   }
+ 
   
 }
