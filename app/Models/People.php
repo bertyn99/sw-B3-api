@@ -33,10 +33,13 @@ class People extends Model
         return $this->belongsToMany(Film::class, 'people_films','film','character');
     }
     public function species(){
-        return $this->belongsToMany(Film::class, 'people_species','specie','people');
+        return $this->belongsToMany(Specie::class, 'people_species','specie','people');
     }
     public function planet(){
         return $this->belongsTo(Planet::class, 'homeworld');
+    }
+    public function starship(){
+        return $this->belongsToMany(Starship::class, 'people_starships','starship','people');
     }
 
 }
